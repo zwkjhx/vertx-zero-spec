@@ -9,11 +9,11 @@
                     "description": "「多操作」多个按钮，最少包含一个，内置 &lt;Button/&gt; 定义",
                     "minLength": 1,
                     "items":{
-                        "$ref": "http://www.vertx-cloud.cn/semantic/web-button.json#/$defs/authorize"
+                        "$ref": "http://www.vertx-cloud.cn/semantic/web-button.json#/authorize"
                     }
                 },
                 {
-                    "$ref": "http://www.vertx-cloud.cn/semantic/web-button.json#/$defs/authorize"
+                    "$ref": "http://www.vertx-cloud.cn/semantic/web-button.json#/authorize"
                 }
             ]
         }

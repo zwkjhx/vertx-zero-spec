@@ -56,7 +56,7 @@
             ]
         },
         "webAction": {
-            "$ref": "http://www.vertx-cloud.cn/amb/web-button.json#/$defs/authorize"
+            "$ref": "http://www.vertx-cloud.cn/amb/web-button.json#/authorize"
         },
         "webView": {
             "name": {
