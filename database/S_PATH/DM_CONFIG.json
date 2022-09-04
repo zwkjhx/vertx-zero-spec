@@ -59,10 +59,7 @@
             "$ref": "http://www.vertx-cloud.cn/amb/web-button.json#/$defs/authorize"
         },
         "webView": {
-            "name": {
-                "type": "string",
-                "description": "视图名称，"
-            }
+            "$ref": "http://www.vertx-cloud.cn/semantic/authorize-view.json#/$defs/by-name"
         }
     }
 }
