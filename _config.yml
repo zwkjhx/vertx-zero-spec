@@ -5,5 +5,3 @@ plugins:
   - jekyll-redirect-from
 whitelist:
   - jekyll-redirect-from
-redirect_from: /*
-redirect_to: /*.json
