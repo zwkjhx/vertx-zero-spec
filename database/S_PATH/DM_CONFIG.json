@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "http://www.vertx-cloud.cn/database/S_PATH/DM_CONFIG",
+    "$id": "http://www.vertx-cloud.cn/database/S_PATH/DM_CONFIG.json",
     "$comment": "用于权限设置过程中对维度的定义",
     "title": "维度配置",
     "type": "object",
@@ -60,10 +60,13 @@
                 {
                     "type": "array",
                     "description": "「多操作」权限管理界面包含：保存 和 保存所有 的双按钮",
-                    "minLength": 1
+                    "minLength": 1,
+                    "items":{
+                        "$ref": "http://www.vertx-cloud.cn/web/action.json/button-common"
+                    }
                 },
                 {
-                    "$ref": "http://www.vertx-cloud.cn/web/action/button-common"
+                    "$ref": "http://www.vertx-cloud.cn/web/action.json/button-common"
                 }
             ]
         },

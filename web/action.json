@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "http://www.vertx-cloud.cn/web/action",
+    "$id": "http://www.vertx-cloud.cn/web/action.json",
     "$defs": {
         "button-common": {
             "type": "object",
@@ -23,7 +23,10 @@
                     ],
                     "description": "Ant Design按钮类型"
                 }
-            }
+            },
+            "required":[
+                "text"
+            ]
         }
     }
 }
