@@ -62,11 +62,11 @@
                     "description": "「多操作」权限管理界面包含：保存 和 保存所有 的双按钮",
                     "minLength": 1,
                     "items":{
-                        "$ref": "http://www.vertx-cloud.cn/web/action.json/button-common"
+                        "$ref": "http://www.vertx-cloud.cn/web/action.json#/button-authorize"
                     }
                 },
                 {
-                    "$ref": "http://www.vertx-cloud.cn/web/action.json/button-common"
+                    "$ref": "http://www.vertx-cloud.cn/web/action.json#/button-authorize"
                 }
             ]
         },
