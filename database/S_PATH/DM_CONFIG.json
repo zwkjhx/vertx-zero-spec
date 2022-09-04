@@ -1,70 +1,76 @@
 {
-    "$schema": "http://json-schema.org/schema",
-    "$id": "http://www.vertx-cloud.cn/database/S_PATH/DM_CONFIG.json",
-    "$comment": "用于权限设置过程中对第一维度的基础维度定义",
-    "title": "权限管理/维度面板/维度配置",
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://www.vertx-cloud.cn/database/S_PATH/DM_CONFIG",
+    "$comment": "用于权限设置过程中对维度的定义",
+    "title": "维度配置",
     "type": "object",
     "properties": {
-        "items":{
+        "items": {
             "oneOf": [
                 {
-                    "type":"array",
-                    "description": "「静态模式」该值不依赖后端或前端数据源, 直接从array中解析得到维度数据"
+                    "type": "array",
+                    "description": "「静态模式」该值不依赖后端或前端数据源, 直接从array中解析得到维度数据",
+                    "items": {
+                        "oneOf": [
+                            {
+                                "type": "string",
+                                "description": "静态模式下的格式如：`key,label,value`，最终解析结果和 object 模式一致"
+                            },
+                            {
+                                "type": "object",
+                                "description": "映射到 key, label, value 中进行直接解析",
+                                "properties": {
+                                    "key": {
+                                        "type": "string",
+                                        "description": "选项主键"
+                                    },
+                                    "label": {
+                                        "type": "string",
+                                        "description": "选项呈现文本"
+                                    },
+                                    "value": {
+                                        "type": "string",
+                                        "description": "选项值（默认同key）"
+                                    }
+                                }
+                            }
+                        ]
+                    }
                 },
                 {
-                    "type":"object",
+                    "type": "object",
                     "description": "「前端模式」提供前端字典配置读取维度数据、「后端模式」在后端执行解析后读取，解析时启用 HAdmit 接口读取"
                 }
             ]
         },
-        "webAdmit":{
+        "webAdmit": {
             "oneOf": [
                 {
-                    "type":"array",
+                    "type": "array",
                     "description": "「固定模式」是否启用 S_ROLE 中的 power 属性，提供高级权限配置数据限制，只有拥有高级权限的角色可对权限进行管理"
                 },
                 {
-                    "type":"object",
+                    "type": "object",
                     "description": "「配置模式」配置模式下，该属性存储了执行权限检查的相关配置。"
                 }
             ]
         },
-        "webAction":{
+        "webAction": {
             "oneOf": [
                 {
-                    "type":"array",
+                    "type": "array",
                     "description": "「多操作」权限管理界面包含：保存 和 保存所有 的双按钮",
                     "minLength": 1
                 },
                 {
-                    "type":"object",
-                    "description": "「单操作」权限管理界面只包含：保存 按钮（等价于保存所有）",
-                    "properties": {
-                        "text":{
-                            "type":"string",
-                            "description": "按钮文字"
-                        },
-                        "icon":{
-                            "type":"string",
-                            "description": "按钮图标"
-                        },
-                        "type":{
-                            "type":"string",
-                            "enum": [
-                                "primary",
-                                "default",
-                                "denger"
-                            ],
-                            "description": "Ant Design按钮类型"
-                        }
-                    }
+                    "$ref": "http://www.vertx-cloud.cn/web/button/action-authorize"
                 }
             ]
         },
-        "webView":{
-            "name":{
-                "type":"string",
-                "description":"视图名称，"
+        "webView": {
+            "name": {
+                "type": "string",
+                "description": "视图名称，"
             }
         }
     }
