@@ -4,7 +4,7 @@
     "$defs": {
         "authorize": {
             "type": "object",
-            "description": "基本按钮对象，对应 <Button/> 标签前端",
+            "description": "基本按钮对象，对应 &lt;Button/&gt; 标签前端",
             "properties": {
                 "text": {
                     "type": "string",
