@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://www.vertx-cloud.cn/amb/web-button.json",
+    "$defs":{
+        "authorize":{
+            "oneOf": [
+                {
+                    "type": "array",
+                    "description": "「多操作」多个按钮，最少包含一个，内置 <Button/> 定义",
+                    "minLength": 1,
+                    "items":{
+                        "$ref": "http://www.vertx-cloud.cn/semantic/web-button.json#/authorize"
+                    }
+                },
+                {
+                    "$ref": "http://www.vertx-cloud.cn/semantic/web-button.json#/authorize"
+                }
+            ]
+        }
+    }
+}
