@@ -63,7 +63,7 @@
                     "minLength": 1
                 },
                 {
-                    "$ref": "http://www.vertx-cloud.cn/web/button/action-authorize"
+                    "$ref": "http://www.vertx-cloud.cn/web/action/button-common"
                 }
             ]
         },
