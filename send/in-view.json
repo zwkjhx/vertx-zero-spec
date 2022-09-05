@@ -1,6 +1,6 @@
 {
     "$schema": "http://json-schema.org/draft-07/schema",
-    "$id": "http://www.vertx-cloud.cn/semantic/secure-view.json",
+    "$id": "http://www.vertx-cloud.cn/send/in-view.json",
     "$defs": {
         "by-name": {
             "type": "object",

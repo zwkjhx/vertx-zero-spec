@@ -11,30 +11,7 @@
                     "type": "array",
                     "description": "「静态模式」该值不依赖后端或前端数据源, 直接从array中解析得到维度数据",
                     "items": {
-                        "oneOf": [
-                            {
-                                "type": "string",
-                                "description": "静态模式下的格式如：`key,label,value`，最终解析结果和 object 模式一致"
-                            },
-                            {
-                                "type": "object",
-                                "description": "映射到 key, label, value 中进行直接解析",
-                                "properties": {
-                                    "key": {
-                                        "type": "string",
-                                        "description": "选项主键"
-                                    },
-                                    "label": {
-                                        "type": "string",
-                                        "description": "选项呈现文本"
-                                    },
-                                    "value": {
-                                        "type": "string",
-                                        "description": "选项值（默认同key）"
-                                    }
-                                }
-                            }
-                        ]
+                        "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/common"
                     }
                 },
                 {
@@ -56,10 +33,10 @@
             ]
         },
         "webAction": {
-            "$ref": "http://www.vertx-cloud.cn/sage/web-button.json#/$defs/authorize"
+            "$ref": "http://www.vertx-cloud.cn/sage/web-button.json#/$defs/common"
         },
         "webView": {
-            "$ref": "http://www.vertx-cloud.cn/semantic/secure-view.json#/$defs/by-name"
+            "$ref": "http://www.vertx-cloud.cn/send/in-view.json#/$defs/by-name"
         }
     }
 }
