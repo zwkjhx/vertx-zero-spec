@@ -26,6 +26,6 @@
         }
     },
     "required": [
-        "webComponent"
+        "webComponent", "webBind"
     ]
 }
