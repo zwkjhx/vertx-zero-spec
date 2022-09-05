@@ -24,7 +24,10 @@
             "oneOf": [
                 {
                     "type": "array",
-                    "description": "「固定模式」是否启用 S_ROLE 中的 power 属性，提供高级权限配置数据限制，只有拥有高级权限的角色可对权限进行管理"
+                    "description": "「固定模式」是否启用 S_ROLE 中的 power 属性，提供高级权限配置数据限制，只有拥有高级权限的角色可对权限进行管理",
+                    "items": {
+                        "type": "string"
+                    }
                 },
                 {
                     "type": "object",
