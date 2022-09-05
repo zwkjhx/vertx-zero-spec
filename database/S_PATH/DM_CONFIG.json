@@ -56,10 +56,10 @@
             ]
         },
         "webAction": {
-            "$ref": "../sega/web-button.json#/$defs/authorize"
+            "$ref": "http://www.vertx-cloud.cn/sega/web-button.json#/$defs/authorize"
         },
         "webView": {
-            "$ref": "../semantic/secure-view.json#/$defs/by-name"
+            "$ref": "http://www.vertx-cloud.cn/semantic/secure-view.json#/$defs/by-name"
         }
     }
 }
