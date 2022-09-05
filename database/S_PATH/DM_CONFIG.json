@@ -9,7 +9,7 @@
             "oneOf": [
                 {
                     "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/common",
-                    "description": "「静态模式」直接定义对象选项得到结果，这种模式只支持 array ( Element 是 String）"
+                    "description": "「静态模式」（两种，String / Object），各自处理成合法的 Option"
                 },
                 {
                     "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum",
