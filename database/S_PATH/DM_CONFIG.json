@@ -6,20 +6,37 @@
     "type": "object",
     "properties": {
         "items": {
-            "oneOf": [
-                {
-                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/common",
-                    "description": "「静态模式」（两种，String / Object），各自处理成合法的 Option"
+            "if": {
+                "type": "array"
+            },
+            "then": {
+                "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/common",
+                "description": "「静态模式」（两种，String / Object），各自处理成合法的 Option"
+            },
+            "else": {
+                "if": {
+                    "type": "string"
                 },
-                {
-                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum",
-                    "description": "「前端模式」字典解析"
+                "then": {
+                    "then": {
+                        "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum",
+                        "description": "「前端模式」字典解析"
+                    }
                 },
-                {
-                    "$ref": "http://www.vertx-cloud.cn/semantic/dao.json",
-                    "description": "「后端模式」访问 DAO 提取维度数据"
+                "else": {
+                    "if": {
+                        "source": null
+                    },
+                    "then": {
+                        "$ref": "http://www.vertx-cloud.cn/semantic/dao.json",
+                        "description": "「后端模式」访问 DAO 提取维度数据"
+                    },
+                    "else": {
+                        "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum",
+                        "description": "「前端模式」字典解析"
+                    }
                 }
-            ]
+            }
         },
         "webAdmit": {
             "oneOf": [

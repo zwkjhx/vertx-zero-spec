@@ -49,7 +49,10 @@
                     "type": "string",
                     "description": "「列表」显示字段"
                 }
-            }
+            },
+            "required": [
+                "source"
+            ]
         }
     }
 }

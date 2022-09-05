@@ -14,7 +14,10 @@
                     "type": "object",
                     "description": "直接被 VertxDao 消费的基础配置"
                 }
-            }
+            },
+            "required": [
+                "dao"
+            ]
         }
     }
 }
