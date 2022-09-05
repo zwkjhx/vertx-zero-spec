@@ -4,6 +4,7 @@
     "$defs": {
         "common": {
             "type": "array",
+            "description": "「二义性」String | Object 数组元素",
             "items": {
                 "if": {
                     "type": "string"
