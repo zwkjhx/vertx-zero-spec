@@ -23,6 +23,39 @@
         },
         "webTree":{
             "$ref": "http://www.vertx-cloud.cn/see/web-tree.json#/$defs/config"
+        },
+        "webChildren": {
+            "type": "array",
+            "description": "子组件",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "component": {
+                        "type": "string"
+                    },
+                    "key": {
+                        "type": "string"
+                    }
+                },
+                "required": [
+                    "key", "component"
+                ]
+            }
+        },
+        "webData": {
+            "type": "object",
+            "description": "提交器：处理输入和输出",
+            "properties": {
+                "empty": {
+                    "type": "boolean"
+                },
+                "initializer": {
+                    "type": "string"
+                },
+                "requester": {
+                    "type": "string"
+                }
+            }
         }
     },
     "required": [
