@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "http://www.vertx-cloud.cn/see/web-button.json",
     "$defs": {
-        "fixed": {
+        "common": {
             "type": "object",
             "description": "基本按钮对象，对应 &lt;Button/&gt; 标签前端",
             "properties": {
