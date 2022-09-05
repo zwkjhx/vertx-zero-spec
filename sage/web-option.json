@@ -7,10 +7,18 @@
                 {
                     "type": "array",
                     "description": "选项解析：key,label,value",
-                    "minLength": 1
+                    "minLength": 1,
+                    "items":{
+                        "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/common"
+                    }
                 },
                 {
-                    "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/common"
+                    "type": "array",
+                    "description": "选项解析：key,label,value",
+                    "minLength": 1,
+                    "items":{
+                        "type": "string"
+                    }
                 }
             ]
         }
