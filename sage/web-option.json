@@ -5,20 +5,22 @@
         "common":{
             "oneOf": [
                 {
-                    "type": "array",
-                    "description": "选项解析：key,label,value",
-                    "minLength": 1,
-                    "items":{
-                        "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/common"
-                    }
+                    "type": "string",
+                    "description": "选项解析：key,label,value"
                 },
                 {
-                    "type": "array",
-                    "description": "选项解析：key,label,value",
-                    "minLength": 1,
-                    "items":{
-                        "type": "string"
-                    }
+                    "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/common"
+                }
+            ]
+        },
+        "datum": {
+            "oneOf": [
+                {
+                    "type": "string",
+                    "description": "选项解析: source=, value=, display=, label="
+                },
+                {
+                    "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/datum"
                 }
             ]
         }

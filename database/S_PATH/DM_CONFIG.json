@@ -15,8 +15,12 @@
                     }
                 },
                 {
+                    "description": "「前端模式」字典解析",
+                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum"
+                },
+                {
                     "type": "object",
-                    "description": "「前端模式」提供前端字典配置读取维度数据、「后端模式」在后端执行解析后读取，解析时启用 HAdmit 接口读取"
+                    "description": "「后端模式」访问 DAO 提取维度数据"
                 }
             ]
         },
