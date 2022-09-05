@@ -5,7 +5,7 @@
         "common":{
             "oneOf": [
                 {
-                    "type": "string",
+                    "type": "array",
                     "description": "选项解析：key,label,value",
                     "minLength": 1,
                     "items":{
