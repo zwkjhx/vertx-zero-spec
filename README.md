@@ -35,9 +35,3 @@
 5. **模块**部分语法：`#/mod/PATH`，文件对应到PATH，PATH命名为前端后端对应的路径（将`/`切换成`.`）。
 6. **抽象定义**部分语法：`#/melodic/CLASS`，文件对应到`CLASS`，其中`CLASS`为类全名。
 7. sage为二义性定义，包含很多和二义性数据结构相关的内容。
-
-# 3. 规范清单
-
-现存规范清单参考链接：
-
-* [Json Schema Definition](SPEC-JSON.md)
