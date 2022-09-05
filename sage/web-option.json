@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "http://www.vertx-cloud.cn/sage/web-option.json",
     "$defs":{
-        "common":{
+        "fixed":{
             "type":"array",
             "minLength": 1,
             "items":{
@@ -12,7 +12,7 @@
                         "description": "选项解析: key, label, value"
                     },
                     {
-                        "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/common"
+                        "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/fixed"
                     }
                 ]
             }

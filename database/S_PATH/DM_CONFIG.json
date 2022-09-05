@@ -8,7 +8,7 @@
         "items": {
             "oneOf": [
                 {
-                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/common",
+                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/fixed",
                     "description": "「静态模式」直接解析选项得到结果"
                 },
                 {
@@ -16,7 +16,7 @@
                     "description": "「前端模式」字典解析"
                 },
                 {
-                    "type": "object",
+                    "$ref": "http://www.vertx-cloud.cn/semantic/dao.json#/$defs/static",
                     "description": "「后端模式」访问 DAO 提取维度数据"
                 }
             ]
