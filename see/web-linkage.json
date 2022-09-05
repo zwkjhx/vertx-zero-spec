@@ -45,6 +45,9 @@
                 "editor": {
                     "$ref": "#/$defs/editor",
                     "description": "关系选择器配置"
+                },
+                "table": {
+                    "$ref": "http://www.vertx-cloud.cn/see/web-table.json#/$defs/simple"
                 }
             }
         },
