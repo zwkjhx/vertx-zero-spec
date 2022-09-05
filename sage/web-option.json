@@ -3,22 +3,10 @@
     "$id": "http://www.vertx-cloud.cn/sage/web-option.json",
     "$defs":{
         "common":{
-            "type":"object",
-            "properties": {
-                "__a": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/common"
-                    }
-                },
-                "__s": {
-                    "type": "array",
-                    "items": {
-                        "type": "string",
-                        "description": "选项解析: key, label, value"
-                    }
-
-                }
+            "type": "array",
+            "items": {
+                "type": "string",
+                "description": "选项解析: key, label, value"
             }
         },
         "datum": {
