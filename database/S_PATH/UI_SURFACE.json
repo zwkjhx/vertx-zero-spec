@@ -55,7 +55,10 @@
                 "requester": {
                     "type": "string"
                 }
-            }
+            },
+            "required": [
+                "initializer", "requester"
+            ]
         }
     },
     "required": [
