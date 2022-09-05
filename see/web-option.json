@@ -21,7 +21,8 @@
             },
             "required":[
                 "key", "label"
-            ]
+            ],
+            "additionalProperties":false
         },
         "datum":{
             "type": "object",
@@ -52,7 +53,8 @@
             },
             "required": [
                 "source"
-            ]
+            ],
+            "additionalProperties":false
         }
     }
 }

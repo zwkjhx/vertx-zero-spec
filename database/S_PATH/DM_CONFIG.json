@@ -18,23 +18,20 @@
                     "type": "string"
                 },
                 "then": {
-                    "then": {
-                        "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum",
-                        "description": "「前端模式」字典解析"
-                    }
+                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum",
+                    "description": "「前端模式」字典解析"
                 },
                 "else": {
-                    "if": {
-                        "source": null
-                    },
-                    "then": {
-                        "$ref": "http://www.vertx-cloud.cn/semantic/dao.json",
-                        "description": "「后端模式」访问 DAO 提取维度数据"
-                    },
-                    "else": {
-                        "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum",
-                        "description": "「前端模式」字典解析"
-                    }
+                    "oneOf": [
+                        {
+                            "$ref": "http://www.vertx-cloud.cn/semantic/dao.json",
+                            "description": "「后端模式」访问 DAO 提取维度数据"
+                        },
+                        {
+                            "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/datum",
+                            "description": "「前端模式」字典解析"
+                        }
+                    ]
                 }
             }
         },

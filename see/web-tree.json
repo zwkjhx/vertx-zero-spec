@@ -26,7 +26,8 @@
                     "type": "string",
                     "description": "该数节点排序用属性名"
                 }
-            }
+            },
+            "additionalProperties":false
         }
     }
 }
