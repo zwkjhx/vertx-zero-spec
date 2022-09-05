@@ -5,7 +5,7 @@
     "title": "维度配置",
     "type": "object",
     "properties": {
-        "items": {
+        "_items": {
             "oneOf": [
                 {
                     "type": "array",
