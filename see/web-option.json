@@ -33,7 +33,13 @@
                 },
                 "value": {
                     "type": "string",
-                    "description": "值字段"
+                    "description": "值字段",
+                    "default": "key"
+                },
+                "key": {
+                    "type": "string",
+                    "description": "唯一键字段",
+                    "default": "key"
                 },
                 "label": {
                     "type": "string",

@@ -16,7 +16,7 @@
                     "description": "「前端模式」字典解析"
                 },
                 {
-                    "$ref": "http://www.vertx-cloud.cn/semantic/dao.json#/$defs/static",
+                    "$ref": "http://www.vertx-cloud.cn/semantic/dao.json",
                     "description": "「后端模式」访问 DAO 提取维度数据"
                 }
             ]

@@ -11,6 +11,17 @@
                 "TREE",
                 "FOREST"
             ]
+        },
+        "ScUi": {
+            "type": "string",
+            "description": "数据分类，NONE:无, WEB:静态专用, DAO:静态接口, ATOM:动态接口, DEFINE:用户自定义",
+            "enum": [
+                "NONE",
+                "WEB",
+                "DAO",
+                "ATOM",
+                "DEFINE"
+            ]
         }
     }
 }
