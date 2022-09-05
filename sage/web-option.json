@@ -5,11 +5,19 @@
         "common":{
             "oneOf": [
                 {
-                    "type": "string",
-                    "description": "选项解析：key,label,value"
+                    "type": "array",
+                    "minLength": 1,
+                    "items": {
+                        "type": "string",
+                        "description": "选项解析：key,label,value"
+                    }
                 },
                 {
-                    "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/common"
+                    "type": "array",
+                    "minLength": 1,
+                    "items": {
+                        "$ref": "http://www.vertx-cloud.cn/see/web-option.json#/$defs/common"
+                    }
                 }
             ]
         },

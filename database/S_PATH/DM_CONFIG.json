@@ -8,15 +8,12 @@
         "items": {
             "oneOf": [
                 {
-                    "type": "array",
-                    "description": "「静态模式」该值不依赖后端或前端数据源, 直接从array中解析得到维度数据",
-                    "items": {
-                        "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/common"
-                    }
+                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/common",
+                    "description": "「静态模式」直接解析选项得到结果"
                 },
                 {
-                    "description": "「前端模式」字典解析",
-                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum"
+                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum",
+                    "description": "「前端模式」字典解析"
                 },
                 {
                     "type": "object",
