@@ -81,7 +81,16 @@
                     "description": "添加关系设置的初始值，可支持属性解析器"
                 },
                 "search": {
-                    "$ref": "http://www.vertx-cloud.cn/see/web-qr.json#/$defs/search"
+                    "type": "object",
+                    "properties": {
+                        "placeholder": {
+                            "type": "string",
+                            "description": "搜索框上的水印文字"
+                        },
+                        "condition": {
+                            "$ref": "http://www.vertx-cloud.cn/semantic/qr.json#/$defs/search"
+                        }
+                    }
                 },
                 "ajax": {
                     "$ref": "http://www.vertx-cloud.cn/see/web-data.json#/$defs/ajax"
