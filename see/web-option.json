@@ -30,6 +30,18 @@
                 "source": {
                     "type": "string",
                     "description": "字典名称"
+                },
+                "value": {
+                    "type": "string",
+                    "description": "值字段"
+                },
+                "label": {
+                    "type": "string",
+                    "description": "「表单」显示字段"
+                },
+                "display":{
+                    "type": "string",
+                    "description": "「列表」显示字段"
                 }
             }
         }
