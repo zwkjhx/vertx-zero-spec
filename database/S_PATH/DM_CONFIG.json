@@ -8,10 +8,6 @@
         "items": {
             "oneOf": [
                 {
-                    "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/common",
-                    "description": "「静态模式」直接解析选项得到结果"
-                },
-                {
                     "$ref": "http://www.vertx-cloud.cn/sage/web-option.json#/$defs/datum",
                     "description": "「前端模式」字典解析"
                 },

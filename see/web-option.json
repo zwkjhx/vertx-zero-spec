@@ -17,11 +17,11 @@
                 "value": {
                     "type": "string",
                     "description": "选项值（默认同key）"
-                },
-                "required":[
-                    "key", "label"
-                ]
-            }
+                }
+            },
+            "required":[
+                "key", "label"
+            ]
         },
         "datum":{
             "type": "object",
