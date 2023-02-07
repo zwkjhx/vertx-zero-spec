@@ -1,7 +1,5 @@
 ifndef::imagesdir[:imagesdir: ../images]
 :data-uri:
-:source-highlighter: highlightjs
-:highlightjs-theme: Agate
 
 === 0.1.环境要求
 
@@ -30,12 +28,10 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 ==== 0.2.1.流程图
 
-&nbsp;&nbsp;&nbsp;&nbsp;
 开发流程走开源社区普遍的Fork流程，整体流程图如下：
 
 image::workflow-fork.png[Fork,1280]
 
-&nbsp;&nbsp;&nbsp;&nbsp;
 整个环境中包括两种PR
 
 * Dev PR / develop分支：从开发人员Fork分支中直接提交PR到 *develop* 分支的PR，*develop* 分支可配置到测试环境中直接提供给测试人员测试。
@@ -46,7 +42,7 @@ image::workflow-fork.png[Fork,1280]
 
 ==== 0.2.2.操作步骤
 
-&nbsp;&nbsp;&nbsp;&nbsp;操作流程参考如下步骤：
+操作流程参考如下步骤：
 
 1. 在远程环境创建Fork（手工操作），Fork之后拿到自己的分支代码路径（如：https://gitee.com/account/xc.git）
 
@@ -56,7 +52,7 @@ image::workflow-fork.png[Fork,1280]
 --
 [source,bash]
 ----
-git clone https://gitee.com/account/xc.git
+$ git clone https://gitee.com/account/xc.git
 ----
 --
 
@@ -66,7 +62,7 @@ git clone https://gitee.com/account/xc.git
 --
 [source,bash]
 ----
-git remote add upstream https://gitee.com/silentbalanceyh/xc.git
+$ git remote add upstream https://gitee.com/silentbalanceyh/xc.git
 ----
 --
 
@@ -76,10 +72,10 @@ git remote add upstream https://gitee.com/silentbalanceyh/xc.git
 --
 [source,bash]
 ----
-git add .
-git commit -m "您的备注信息"
+$ git add .
+$ git commit -m "您的备注信息"
 # 该步骤会提交代码到您自己的Fork分支：https://gitee.com/account/xc.git
-git push      
+$ git push      
 ----
 --
 
@@ -91,10 +87,10 @@ git push
 [source,bash]
 ----
 # 注意更新代码是从upstream中更新（develop分支）：https://gitee.com/silentbalanceyh/xc.git
-git pull upstream develop
+$ git pull upstream develop
 
 # 此步骤的目的是保持最新代码推送到自己Fork分支中
-git push 
+$ git push 
 ----
 --
 
@@ -102,7 +98,6 @@ git push
 
 ==== 0.3.1.流程图
 
-&nbsp;&nbsp;&nbsp;&nbsp;
 部署流程参考下图：
 
 image::workflow-deploy.png[Fork,1280]
@@ -110,7 +105,7 @@ image::workflow-deploy.png[Fork,1280]
 
 ==== 0.3.2.关于IaC
 
-[TIP]
+[NOTE]
 ====
 IaC，全称为Infrastructure As Code（*基础设施即代码*），该术语在基础设施自动化时经常听到，它优势如下：
 

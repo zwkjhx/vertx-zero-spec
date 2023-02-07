@@ -5,7 +5,7 @@
 :revdate: 02.04.2023
 :doctype: book
 :toc: left
-:toclevels: 2
+:toclevels: 3
 :toc-title: 目录
 :description:
 :source-highlighter: highlightjs
@@ -23,7 +23,17 @@
 
 == 0. 环境标准
 
-include::0-intro/01.requirement.adoc[]
+include::00-intro/00.requirement.adoc[]
 
 == 1. 工程规范
 
+include::01-spec/01.spec-backend.adoc[]
+include::01-spec/02.spec-frontend.adoc[]
+include::01-spec/03.spec-integration.adoc[]
+
+== 2. 环境搭建
+
+include::02-env/01.env-ready.adoc[]
+include::02-env/02.env-database.adoc[]
+
+== 3. 原理剖析
