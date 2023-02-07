@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-export DOC_OUT=_document
+export DOC_OUT=document
 
 echo -e "${COLOR_GREEN} 拷贝资源文件……"
 cp -rf ${DOC_OUT}/doc-config/asciidoc/* ${DOC_OUT}/doc-web
