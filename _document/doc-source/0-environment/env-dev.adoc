@@ -1,0 +1,15 @@
+=== 0.1.后端环境
+
+==== 0.1.1.目录结构
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+后端项目从脚手架项目 <https://gitee.com/silentbalanceyh/vertx-zero-scaffold> 扩展而来，为了团队开发，重新修订规范形成最终一致性执行准则。
+
+[TIP]
+====
+vertx-zero-scaffold项目有两个地址：Gitee和Github，*镜像规则会从Github同步到Gitee*，PR提交流程中尽可能提交PR到Github进行相关变更以及修改，不推荐直接提交PR到Gitee中进行项目修改。
+====
+
+&nbsp;&nbsp;&nbsp;&nbsp;为适配本项目
+
+=== 0.2.前端环境

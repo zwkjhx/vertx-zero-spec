@@ -1,5 +1,7 @@
 # Zero Aeon Cloud 专用数据规范
 
+规范：[《Zero云平台白皮书》](_document/doc-web/index.html)
+
 # 1. 基本介绍
 
 * 发布地址：http://www.vertx-cloud.cn/

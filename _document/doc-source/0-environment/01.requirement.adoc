@@ -1,0 +1,108 @@
+ifndef::imagesdir[:imagesdir: ../images]
+:data-uri:
+:source-highlighter: highlightjs
+:highlightjs-theme: Agate
+
+=== 0.1.环境要求
+
+[options="header"]
+|====
+|分类|版本|执行命令|用途
+|运行时|17+|java|link:https://www.azul.com/downloads/?version=java-17-lts&package=jdk[下载,window="_blank"]，Java环境
+|运行时|19.6+|node, npm|link:https://nodejs.org/en/[下载,window="_blank"]，NodeJS环境
+|运行时|3.2.0|ruby, gem|link:https://www.ruby-lang.org/en/downloads/[下载,window="_blank"]，推荐AsciiDoc使用Ruby方式安装
+|运行时|2.37.1+|git|link:https://git-scm.com/[下载,window="_blank"]，MacOS中XCode自带
+|构建|3.8.x+|mvn|link:https://maven.apache.org/download.cgi[下载,window="_blank"]，Maven环境
+|构建|1.0.0-m4|mvnd|link:https://github.com/apache/maven-mvnd/releases[下载,window="_blank"]，并行Maven环境（自带Maven 4.0）
+|构建|7.6+|gradle|link:https://gradle.org/install/[下载,window="_blank"]，Gradle环境
+|文档|4.0.x|jsdoc|（npm/yarn）JavaScript文档生成
+|文档|1.2.2|live-server|（npm/yarn）文档服务器
+|文档|-|dash|（npm/yarn）标准文档皮肤工具
+|文档|2.0.18|asciidoctor|（gem）AsciiDoc文档生成工具
+|容器：运行时|20.x|docker, docker-compose|link:https://docs.docker.com/get-docker/[下载,window="_blank"]，容器运行时，新版自带K8S单节点集群环境
+|容器：镜像工具|1.8.5|packer|link:https://developer.hashicorp.com/packer/downloads[下载,window="_blank"]，镜像工具，Maven可使用插件直接打包镜像
+|自动部署|2.14.2|ansible|link:https://docs.ansible.com/ansible/latest/installation_guide/index.html[下载,window="_blank"]，应用配置自动部署工具
+|自动部署|1.3.7|terraform|link:https://developer.hashicorp.com/terraform/downloads[下载,window="_blank"]，基础设施自动部署工具
+|====
+
+
+=== 0.2.开发流程
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+开发流程走开源社区普遍的Fork流程，整体流程图如下：
+
+image::workflow-fork.png[Fork,1024]
+
+&nbsp;&nbsp;&nbsp;&nbsp;
+整个环境中包括两种PR
+
+* Dev PR / develop分支：从开发人员Fork分支中直接提交PR到 *develop* 分支的PR，*develop* 分支可配置到测试环境中直接提供给测试人员测试。
+* Release PR / master分支：从 *develop* 分支提交同库PR到 *master* 分支中。
+
+[WARNING]
+*develop* 分支和 *master* 分支追加保护功能，锁定之后不允许任何形式的 push 动作直接修改分支中的内容，仅走PR流程可更改两个分支中的代码。
+
+&nbsp;&nbsp;&nbsp;&nbsp;操作流程参考如下代码块：
+
+1. 在远程环境创建Fork（手工操作），Fork之后拿到自己的分支代码路径（如：https://gitee.com/account/xc.git）
+
+2. 使用git命令从远程个人账号中下载代码
+
++
+--
+[source,bash]
+----
+git clone https://gitee.com/account/xc.git
+----
+--
+
+3. 在本机项目中运行命令添加远程引用（引用名推荐：upstream）:
+
++
+--
+[source,bash]
+----
+git add upstream https://gitee.com/silentbalanceyh/xc.git
+----
+--
+
+4. （上述三步执行完成后就搭建好了本地代码整体环境）提交代码流程：
+
++
+--
+[source,bash]
+----
+git add .
+git commit -m "您的备注信息"
+# 该步骤会提交代码到您自己的Fork分支：https://gitee.com/account/xc.git
+git push      
+----
+--
+
+5. 代码提交之后可在线提交PR到 *develop* 分支中，Code Review之后执行合并。
+6. 更新代码流程：
+
++
+--
+[source,bash]
+----
+# 注意更新代码是从upstream中更新（develop分支）：https://gitee.com/silentbalanceyh/xc.git
+git pull upstream develop
+
+# 此步骤的目的是保持最新代码推送到自己Fork分支中
+git push 
+----
+--
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+= Zero云平台白皮书
+:author: 虞浪
+:email: silentbalanceyh@126.com
+:revnumber: v1.0
+:revdate: 02.04.2023
+:doctype: book
+:toc: left
+:toclevels: 2
+:toc-title: 目录
+:description:
+:source-highlighter: highlightjs
+:imagesdir: ./images
+:data-uri:
+
+
+== 版本修订
+
+[options="header"]
+|====
+|版本|作者|时间|描述
+|1.0-DRAFT|虞浪|2023-02-07|起草基本云平台规范
+|====
+
+== 0. 环境标准
+
+include::0-environment/01.requirement.adoc[]
