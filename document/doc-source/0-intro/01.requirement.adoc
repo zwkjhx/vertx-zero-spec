@@ -66,7 +66,7 @@ git clone https://gitee.com/account/xc.git
 --
 [source,bash]
 ----
-git add upstream https://gitee.com/silentbalanceyh/xc.git
+git remote add upstream https://gitee.com/silentbalanceyh/xc.git
 ----
 --
 
@@ -107,8 +107,19 @@ git push
 
 image::workflow-deploy.png[Fork,1280]
 
-==== 0.3.2.设计思路
 
+==== 0.3.2.关于IaC
+
+[TIP]
+====
+IaC，全称为Infrastructure As Code（*基础设施即代码*），该术语在基础设施自动化时经常听到，它优势如下：
+
+1. 使用IaC，只需单击一下即可重新创建任何复杂的基础结构。
+2. 可以以IaC的形式对基础结构状态执行 *版本控制*。
+3. 以开发人员为中心的基础架构管理工作流程，和开发的应用程序一样，IaaC代码的标准做法是遵循所有标准编码实践（测试、审查等）。
+
+整个工作流中同时使用ansible和terraform是不冲突的，前者负责 *配置管理*（应用配置管理），后者负责 *基础设施*（服务器、网络、虚拟机、数据库等），协同工作，再借用Jenkins工具做好DevOps的流水线工作，实现最终开发、测试、生产环境的自动化开发测试运维部署。
+====
 
 
 
