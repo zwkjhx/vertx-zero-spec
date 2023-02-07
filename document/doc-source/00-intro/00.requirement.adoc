@@ -10,6 +10,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 |运行时|19.6+|node, npm|link:https://nodejs.org/en/[下载,window="_blank"]，NodeJS环境
 |运行时|3.2.0|ruby, gem|link:https://www.ruby-lang.org/en/downloads/[下载,window="_blank"]，推荐AsciiDoc使用Ruby方式安装
 |运行时|2.37.1+|git|link:https://git-scm.com/[下载,window="_blank"]，MacOS中XCode自带
+|运行时|6.5|tiup|link:https://docs.pingcap.com/zh/tidb/stable/production-deployment-using-tiup[下载,window="_blank"]，TiDB命令
 |构建|3.8.x+|mvn|link:https://maven.apache.org/download.cgi[下载,window="_blank"]，Maven环境
 |构建|1.0.0-m4|mvnd|link:https://github.com/apache/maven-mvnd/releases[下载,window="_blank"]，并行Maven环境（自带Maven 4.0）
 |构建|7.6+|gradle|link:https://gradle.org/install/[下载,window="_blank"]，Gradle环境
