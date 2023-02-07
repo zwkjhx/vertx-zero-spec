@@ -28,10 +28,12 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 === 0.2.开发流程
 
+==== 0.2.1.流程图
+
 &nbsp;&nbsp;&nbsp;&nbsp;
 开发流程走开源社区普遍的Fork流程，整体流程图如下：
 
-image::workflow-fork.png[Fork,1024]
+image::workflow-fork.png[Fork,1280]
 
 &nbsp;&nbsp;&nbsp;&nbsp;
 整个环境中包括两种PR
@@ -42,7 +44,9 @@ image::workflow-fork.png[Fork,1024]
 [WARNING]
 *develop* 分支和 *master* 分支追加保护功能，锁定之后不允许任何形式的 push 动作直接修改分支中的内容，仅走PR流程可更改两个分支中的代码。
 
-&nbsp;&nbsp;&nbsp;&nbsp;操作流程参考如下代码块：
+==== 0.2.2.操作步骤
+
+&nbsp;&nbsp;&nbsp;&nbsp;操作流程参考如下步骤：
 
 1. 在远程环境创建Fork（手工操作），Fork之后拿到自己的分支代码路径（如：https://gitee.com/account/xc.git）
 
@@ -94,8 +98,16 @@ git push
 ----
 --
 
+=== 0.3.部署流程
 
+==== 0.3.1.流程图
 
+&nbsp;&nbsp;&nbsp;&nbsp;
+部署流程参考下图：
+
+image::workflow-deploy.png[Fork,1280]
+
+==== 0.3.2.设计思路
 
 
 
