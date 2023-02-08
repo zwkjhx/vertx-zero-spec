@@ -1,0 +1,61 @@
+ifndef::imagesdir[:imagesdir: ../images]
+:data-uri:
+
+=== 1.4.任务管理规范
+
+任务管理统一使用登录 *VPN* 之后的管理平台，本章节主要针对项目管理过程中任务管理进行说明。
+
+==== 1.4.1.任务类型（Type）
+
+任务类型参考下表
+
+
+[options="header"]
+|====
+|类型|分类|说明
+|image:task-sys-req.png[SYSREQ,16] System Requirement|标准文档|平台级开发需求说明书
+|image:task-sys-tc.png[SYSTC,16] System Test Case|标准文档|平台集测试说明书
+|image:task-app-req.png[APPREQ,16] Module Requirement|标准文档|应用模块开发需求说明书
+|image:task-app-tc.png[APPTC,16] Module Test Case|标准文档|应用模块测试说明书
+|image:task-risk.png[RISK,16] Run Risk|生命周期|风险评估报告，前期可行性分析专用
+|image:task-t-pkg.png[PKG,16] Run Develop|生命周期|核心开发任务包，所有的Task在开发过程中全部任务隶属于此
+|image:task-tc-unit.png[UNIT,16] Run Unit|生命周期|配合开发任务的单元测试任务
+|image:task-tc.png[TC,16] Run Test|生命周期|UAT测试、功能测试、性能测试任务专用
+|image:task-rel.png[REL,16] Run Release|生命周期|部署任务、发版本专用
+|image:task-bug.png[BUG,16] Fix Issue|运维|「*主要问题表*」BUG修复，测试过程中问题提交到此类中
+|image:task-rfc.png[RFC,16] Fix Change Request|运维|变更修复，新模块升级，新功能开发
+|image:task-t.png[RFC,16] Task Common|执行过程|常用任务，无法分类的小任务归属于此
+|image:task-t-personal.png[PERSONAL,16] Task Personal|执行过程|个人任务，包括个人Demo、培训等
+|image:task-t-tpl.png[TPL,16] Task Tpl|执行过程|模板任务，发放给所有人的模板任务
+|image:task-t-explorer.png[EXPLORER,16] Task Explorer|执行过程|探索型任务，未知结果的POC等
+|image:task-t-ops.png[OPS,16] Task Operation|执行过程|运维脚本、数据导入导出所有运维类相关任务
+|====
+
+==== 1.4.2.任务规范
+
+1. 所有带有 *@* 符号的任务为广播任务，广播任务表示每个人必须执行和完成的任务（自建任务模式）
+
++
+--
+[options="header"]
+|====
+|属性|默认值
+|Type|image:task-t-tpl.png[TPL,16] Task Tpl
+|Categories|@SELF TASK
+|Title|通常使用@TPL前缀
+|Severity|Must Have
+|Priority|Highest
+|====
+--
+
+2. 任务标题基本命名规范
+
++
+--
+- 2.1.只有广播任务使用 *@* 符号前缀。
+- 2.2.应用级任务使用各自应用前缀，如 APP / ISO 的任务标题使用 ISO/ 格式。
+- 2.3.任务标题中的数字带单位表示改任务的预估时间。
+- 2.4.个人任务全部使用 *PT* 前缀，个人任务可不填些任何时间相关信息。
+--
+
+3. 所有任务最终会有一个期望，表示该任务的完成目标。

@@ -30,6 +30,7 @@ include::00-intro/00.requirement.adoc[]
 include::01-spec/01.spec-backend.adoc[]
 include::01-spec/02.spec-frontend.adoc[]
 include::01-spec/03.spec-integration.adoc[]
+include::01-spec/04.spec-polarion.adoc[]
 
 == 2. 环境搭建
 
