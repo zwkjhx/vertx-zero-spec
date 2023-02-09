@@ -1,15 +1,93 @@
 ifndef::imagesdir[:imagesdir: ../images]
 :data-uri:
 
-=== 1.1.后端规范
+=== 1.1.后端结构规范
+
+目录规范主要借鉴 link:https://gitee.com/silentbalanceyh/vertx-zero-scaffold[Zero脚手架,window="_blank"]，该脚手架现阶段已运行过7个生产环境案例，这些案例均使用 link:https://www.vertxup.cn[Zero Framework,window="_blank"] 做后端开发主框架，配合工具箱 link:https://gitee.com/silentbalanceyh/vertx-zero-cloud[Cloud工具箱,window="_blank"] 可实现自动化环境，让开发人员集中精力处理 *业务需求*。
+
+举个例子，假设有一个项目如下（为了脱敏，此处为虚拟项目）：
+
+[options="header"]
+|====
+|属性|说明
+|项目名|那由多轨迹平台
+|项目编码|nd，项目编码最好维持在三个或者两个字母
+|仓库地址|https://gitee.com/silentbalanceyh/nd.git
+|后端项目名|nd-api、nd或nd-micro，推荐：nd
+|前端项目名|nd-ui、或nd-web，推荐：nd-ui
+|====
 
 ==== 1.1.1.项目结构
 
+Scaffold项目的整体目录结构如下：
 
-目录规范主要借鉴 link:https://gitee.com/silentbalanceyh/vertx-zero-scaffold[Zero脚手架]，该脚手架现阶段已运行过7个生产环境案例，这些案例均使用 link:https://www.vertxup.cn[Zero Framework] 做后端开发主框架，整个项目基础骨架如下（新版）：
+[options="header"]
+|====
+|Maven类型|主项目|说明
+|pom|nd|当前应用主项目（根项目）
+|jar|nd / nd-app|（入口）启动器
+|pom|nd / nd-inst|辅助工具指令集（Instruction)，自动化工具包
+|jar|nd / nd-inst / nd-dpma|数据处理工具（原Loader）
+|pom|nd / nd-module|模块包，包含当前应用所需的所有模块（对应BLOCK）
+|jar|nd / nd-module / nd-core|核心模块，主项目核心模块（包含了domain领域模型）
+|pom|nd / nd-zone|底座集
+|jar|nd / nd-zone / nd-zero|底座Zero框架连接，负责连接 zero-vie 或其他可连接点（实际依赖连接点）
+|====
+
+命名规则实际是按照从上到下的模式搭建依赖关系，所以上述排序就是应用程序的依赖 *塔* 结构，所以Scaffold项目的结构如下图：
+
+image::spec-backend.png[脚手架,1280]
+
+[CAUTION]
+====
+通常一个小的应用或微服务模块仅提供一个 *nd-commerce* 就够用了，但在某些复杂的管理系统中，模块本身由单机演化而来，配合集成、插件、遗留升级等各种操作，具体架构方向是往上下两头拉开，形成下层（基础层 *nd-down* ）和上层（业务层 *nd-up* ），这样的结构在目前案例中持续存在且证明是行之有效的。对整个系统的微架构而言，不推荐拆分太多层级模块，理论上 *nd-module* 中的所有模块都是平行的。
+====
+
+==== 1.1.2.根项目结构（nd）
+
+Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参考下边的 *pom.xml*：
+
+[source,xml]
+----
+    <parent>
+        <artifactId>vertx-import</artifactId>
+        <groupId>cn.vertxup</groupId>
+        <version>0.9.0-SNAPSHOT</version>
+    </parent>
+----
+
+父项目的核心执行命令文件
+
+[options="header"]
+|====
+|文件|说明
+|/build.bat|Windows平台编译命令
+|/build.sh|Linux/Unix平台编译命令
+|/build-inc.sh|「高级」带zero框架编译的编译命令，Windows可不考虑，只有zero框架修改时会用到
+|====
+
+[TIP]
+====
+父项目还需要做以下几个事：
+
+1. 所有依赖库的版本管理（包含当前项目中的jar版本管理）。
+2. 共享依赖项的引入，此处只引入所有模块都需要使用的三方依赖项，若只是单独项目所需则在项目内部引入。
+3. License/作者/仓库版权等相关信息。
+====
 
 
+==== 1.1.3.模块结构（nd-commerce）
 
-==== 1.1.2.命名规则
+===== 1.1.3.1.基础结构
 
-==== 1.1.3.单元测试
+===== 1.1.3.2.配置结构
+
+===== 1.1.3.3.包结构
+
+==== 1.1.4.启动器（nd-app）
+
+===== 1.1.4.1.基础结构
+
+===== 1.1.4.2.配置结构
+
+===== 1.1.4.3.包结构
