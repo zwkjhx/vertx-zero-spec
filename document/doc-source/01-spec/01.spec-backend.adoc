@@ -12,6 +12,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 |属性|说明
 |项目名|那由多轨迹平台
 |项目编码|nd，项目编码最好维持在三个或者两个字母
+|模块名称|commerce，模块名称可随意，脚手架中的模块名称只是实例用，您可以根据自己的方式设置（此处演示用，如果该应用只有一个模块，可直接使用nd代替，此处的命名规则遵循自定义和一定自由度。）
 |仓库地址|https://gitee.com/silentbalanceyh/nd.git
 |后端项目名|nd-api、nd或nd-micro，推荐：nd
 |前端项目名|nd-ui、或nd-web，推荐：nd-ui
@@ -77,14 +78,10 @@ Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参�
 
 ===== 1.1.1.2.资源目录
 
-[TIP]
-====
 资源目录规范属于Zero Extension部分的内容，主要应用于 *启动器* 和 *模块* 两部分，后续讲解的启动器和模块部分是基于资源目录追加的新规范而已。本章节以目录规范为主体，只枚举特殊文件的功能，核心启动器文件规范放到启动器章节补充，同时参考下边的基本阅读规则：
 
 - <name> 表示动态建模模块名（非模型名称），如CMDB应用中：*<name> = cmdb* ，所以建模目录位于： */atom/cmdb/*  下。
 - 带 @ 标识的被认为是 Loader（包括新版中的 *iac-load.jar* ）可识别的数据目录（默认只导入 *init/oob* ），只有该目录之下的内容会被加载，其他目录的所有Excel、Json都不视为数据文件，直接被忽略。
-
-====
 
 [options="header"]
 |====
@@ -98,6 +95,12 @@ Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参�
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/directory|「zero-ambient/zero-is」文档管理模块专用目录结构树数据源配置。
 |image:i-folder.png[,20] / image:i-yaml.svg[,20] 目录|codex/|「标准框架」后端验证器（Bean Validation）专用配置目录，增强型数据模型验证专用。
 |image:i-folder.png[,20] / image:i-bash.svg[,20] 目录|environment/|Zero Shell Framework默认存储交互式命令行。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|dict/<type>/|字典类型元数据部分的 metadata 配置，type对应字典中的 S_TYPE
+|image:i-folder.png[,20] / image:i-key.png[,20] 文件|keys/|「zero-rbac」证书专用目录。
+|image:i-key.png[,20] 文件|keys/keystore.jceks|「zero-rbac」安全模块专用的证书文件。
+|image:i-key.png[,20] 文件|keys/ipc/rpc-server-keystore.jks|「zero-rbac」RPC安全模块专用的证书文件。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|hybrid/|「模型」静态模型。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|hybrid/workflow/|「模型」工作流模型。
 |image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/integration|「zero-jet」（调试专用）集成通道模拟器，模拟集成端可执行单元测试。
 |image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/job|「zero-jet」（调试专用）任务配置器，通常用与任务专用配置。
 |image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/oob/cab|*@* / S_ACTION资源/操作配置数据目录。
@@ -114,12 +117,13 @@ Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参�
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|init/permission/ui.menu|菜单权限配置文件（执行代码由系统生成）。
 |image:i-json.svg[,20] 文件|init/permission/ui.menu/ZERO_MENU_DISPLAY.json|人工可读菜单数据源，生成不同角色菜单专用。
 |image:i-json.svg[,20] 文件|init/permission/ui.menu/ZERO_MENU_SYSTEM.json|系统加载菜单数据源，生成不同角色菜单专用。
-|image:i-yaml.svg[,20] 文件|init/database.yml|（主入口专用）Liquibase专用生成数据表配置文件。
+|image:i-yaml.svg[,20] 文件|init/database.yml|（表生成主入口）Liquibase专用生成数据表配置文件。
 |image:i-json.svg[,20] 文件|init/environment.json|租户环境全局配置文件（AppId, Sigma, AppKey）。
 |image:i-liquibase.svg[,20] 文件|init/liquibase.properties|Liquibase数据库配置文件。
+|image:i-folder.png[,20] / image:i-java.png[,20] 目录|META-INF/services|ServiceLoader专用配置文件夹，Java规范。
 |image:i-folder.png[,20] / image:i-java.svg[,20] 目录|modulat|模块化专用配置目录。
 |image:i-folder.png[,20] / image:i-plugin.svg[,20] 目录|plugin|插件专用目录。
-|image:i-folder.png[,20] / image:i-java.png[,20] 目录|META-INF/services|ServiceLoader专用配置文件夹，Java规范。
+|image:i-folder.png[,20] / image:i-pojo.png[,20] 目录|pojo|模型专用映射配置文件。
 |image:i-folder.png[,20] / image:i-runtime.svg[,20] 目录|runtime|运行时专用目录。
 |image:i-folder.png[,20] / image:i-workflow.png[,20] 目录|workflow|工作流定义专用目录。
 |image:i-workflow-design.png[,20] 文件|workflow/<name>/workflow.pbmn|BPMN工作流定义文件。
@@ -132,7 +136,7 @@ Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参�
 
 [TIP]
 ====
-若您安装了 *vertx-ai* 工具，可直接使用下边命令执行模块数据标准化生成所需的 initialize.json 文件（实践证明这个文件手写特别费时），您可以在任意时间段修改Excel配置数据内容包括文件删减，最终该命令会根据数据包中的内容执行配置文件标准化。
+若您安装了 *vertx-ai* 工具，可直接使用下边命令执行模块数据标准化生成所需的 initialize.json 文件（实践证明这个文件手写特别费时），您可以在任意时间段修改Excel配置数据内容包括文件删减，最终该命令会根据数据包中的内容执行配置文件标准化。模块名称：*commerce*，该名称会影响配置文件路径，整个环境中不允许重名模块出现。
 
 [source,bash]
 ----
@@ -151,8 +155,8 @@ aj jmod -p src/main/resources/plugin/hotel/oob
 |image:i-bash.svg[,20] 文件|/script/code/zero.jooq.sh|Jooq数据库生成代码执行脚本，参考Zero教程下载依赖 jar 文件到该目录。
 |image:i-bash.svg[,20] 文件|/script/database/database-reinit.sh|执行数据库建库脚本，被根目录 init-db.sh 调用。
 |image:i-sql.png[,20]文件|/script/database/database-reinit.sql|执行数据库建库SQL脚本，被 database-reinit.sh 调用。
-|image:i-folder.png[,20] image:i-java.svg[,20] 目录|/src/main/|（Maven）Java代码文件。
-|image:i-folder.png[,20] image:i-config.svg[,20] 目录|/src/resources/|（Maven）Java类路径、资源文件。
+|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|/src/main/java/|（Maven）Java代码文件。
+|image:i-folder.png[,20] / image:i-config.png[,20] 目录|/src/main/resources/|（Maven）Java类路径、资源文件。
 |image:i-bash.svg[,20] 文件|/init.db.sh|初始化数据库专用入口脚本。
 |image:i-bash.svg[,20] 文件|/init-module.sh|模块化数据文件部署专用配置脚本。
 |====
@@ -193,18 +197,85 @@ aj jmod -p src/main/resources/plugin/hotel/oob
 
 ===== 1.1.3.2.资源结构
 
-模块资源基础目录结构如：
+模块资源基础目录结构如（前文提到过的此处直接写略）：
 
 [options="header"]
 |====
-|类型|路径|说明
-|
+|类型|路径|功能
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|action|（略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|authority|（略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/cn/|（略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/directory|（略）
+|image:i-folder.png[,20] / image:i-java.png[,20] 目录|META-INF/services|（略）
+|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|modulat|（略）
+|image:i-folder.png[,20] / image:i-plugin.svg[,20] 目录|plugin|（略）
+|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|plugin/commerce/oob/|模块核心配置数据目录，此处模块名称为：commerce，所以目录名也为 commerce。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|plugin/commerce/oob/cab|*@* / （略）只包含管理员角色权限数据。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|plugin/commerce/oob/data|*@* / （略）
+|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|plugin/commerce/oob/menu|*@* / （略）
+|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|plugin/commerce/oob/modulat|*@* / （略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|plugin/commerce/oob/module/crud|*@* / （略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|plugin/commerce/oob/module/ui|*@* / （略）
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|plugin/commerce/oob/role/|*@* / （略）只包含管理员角色权限数据。
+|image:i-node.svg[,20] 文件|plugin/commerce/oob/initialize.json|初始化配置，使用 *aj jmod* 可自动生成。
+|image:i-yaml.svg[,20] 文件|plugin/commerce/oob/initialize.yml|Jooq Dao配置，连接模块中需要导数据的模型配置。
+|image:i-json.svg[,20] 文件|plugin/commerce/oob/module.json|开启 /module/ 中功能的配置（CRUD模块化、UI列定义）。
+|image:i-folder.png[,20] / image:i-sql.png[,20] 目录|plugin/sql/commerce/|该模块包含的表SQL定义（liquibase会加载所有SQL文件）。
+|image:i-liquibase.svg[,20] 文件|plugin/sql/commerce.properties|「开发过程专用」Liquibase数据库配置文件。
+|image:i-yaml.svg[,20] 文件|plugin/sql/commerce.yml|（模块表生成入口）Liquibase专用生成数据表配置文件。
+|image:i-folder.png[,20] / image:i-pojo.png[,20] 目录|pojo|（略）
+|image:i-folder.png[,20] / image:i-workflow.png[,20] 目录|workflow|（略）
 |====
+
+模块内资源结构基本和原始资源结构是保持一致，除开 *plugin* 内部有近似的部分，最终会导致所有模块运行在同一个环境中时，所有模块可以协同，不会出现系统匿名读取交叉配置的情况发生，这也是Zero Extension的核心设计思路。模块和模块之间由于目录不同所以相当于在主目录上挂载不同模块信息而已，如：
+
+[source, bash]
+----
+# 运行时插件配置
+/plugin/commerce/           # commerce模块配置
+/plugin/ambient/            # ambient模块配置
+
+# 系统初始化配置
+# commerce模块
+/sql/commerce/              # commerce定义文件
+/commerce.properties        # commerce独立配置文件
+/commerce.yml               # commerce连接文件（真正生产环境使用的是此文件）
+# ambient模块
+/sql/ambient/
+/ambient.properties
+/ambient.yml
+----
+
+您也可以在此基础上扩展自定义的模块配置，如Zero Extension中每个模块根目录中都包含了 *configuration.json* 文件为扩展规范，但由于出现了 zero-bettery 中的 *BAG/BLOCK* 架构，后期是否已就需要此配置文件有待商榷。
 
 ==== 1.1.4.启动器（nd-app）
 
-===== 1.1.4.1.基础结构
+===== 1.1.4.1.自动化部署
 
-===== 1.1.4.2.配置结构
+新版启动器支持 ansible 方式一键部署，整个流程如下：
 
-===== 1.1.4.3.包结构
+1. 全项目编译，运行根项目中的 *build.sh/build.bat* 脚本。
+2. 基础设施准备：此准备过程参考环境搭建章节，主要是为项目初始化 *数据库、云环境、第三方集成等*，推荐使用 Terraform 模式。
+3. 配置数据准备：这是新版最大改动，直接运行启动器下的 *run-ansible.sh/run-ansible.bat* 脚本执行。
+
+先看启动器项目的目录结构：
+
+[options="header"]
+|====
+|类型|路径|功能
+|image:i-folder.png[,20]目录|app@history|历史配置、测试配置、验证配置目录，无实际使用价值，可理解成回收站。
+|image:i-folder.png[,20]目录|app@jar|从指令集中单独编译出来的可执行小工具，小工具通常在开发或生产中使用。
+|image:i-folder.png[,20]目录|app@runtime|自动化运行时：包括自动化配置（开发环境）、自动化部署（生产环境）。
+|image:i-folder.png[,20]目录|app@runtime/@source|自动化运行组件共享数据目录。
+|image:i-folder.png[,20] / image:i-key.png[,20]目录|keys|证书目录。
+|image:i-folder.png[,20] / image:i-key.png[,20]目录|keys/ipc|微服务通信证书目录。
+|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|/src/main/java/|（Maven）Java代码文件。
+|image:i-folder.png[,20] / image:i-config.png[,20] 目录|/src/main/resources/|（Maven）Java类路径、资源文件。
+|image:i-folder.png[,20] / image:i-junit.png[,20] 目录|/src/test/java/|（Maven）Java测试代码文件。
+|image:i-folder.png[,20] / image:i-config-t.png[,20] 目录|/src/test/resources/|（Maven）Java测试类路径、资源文件。
+
+|====
+
+===== 1.1.4.2.代码结构
+
+===== 1.1.4.3.资源结构
