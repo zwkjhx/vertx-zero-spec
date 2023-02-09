@@ -31,7 +31,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 |image:task-t-ops.png[OPS,16] Task Operation|执行过程|运维脚本、数据导入导出所有运维类相关任务
 |====
 
-==== 1.4.2.任务规范
+==== 1.4.2.任务命名
 
 1. 所有带有 *@* 符号的任务为广播任务，广播任务表示每个人必须执行和完成的任务（自建任务模式）
 

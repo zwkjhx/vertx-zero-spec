@@ -18,7 +18,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 |前端项目名|nd-ui、或nd-web，推荐：nd-ui
 |====
 
-==== 1.1.1.项目结构
+==== 1.1.1.根项目结构（nd）
 
 Scaffold项目的整体目录结构如下：
 
@@ -43,8 +43,6 @@ image::spec-backend.png[脚手架,1280]
 ====
 通常一个小的应用或微服务模块仅提供一个 *nd-commerce* 就够用了，但在某些复杂的管理系统中，模块本身由单机演化而来，配合集成、插件、遗留升级等各种操作，具体架构方向是往上下两头拉开，形成下层（基础层 *nd-down* ）和上层（业务层 *nd-up* ），这样的结构在目前案例中持续存在且证明是行之有效的。对整个系统的微架构而言，不推荐拆分太多层级模块，理论上 *nd-module* 中的所有模块都是平行的。
 ====
-
-===== 1.1.1.1.根项目结构（nd）
 
 Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参考下边的 *pom.xml*：
 
@@ -76,7 +74,7 @@ Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参�
 3. License/作者/仓库版权等相关信息。
 ====
 
-===== 1.1.1.2.资源目录
+==== 1.1.2.资源目录规范
 
 资源目录规范属于Zero Extension部分的内容，主要应用于 *启动器* 和 *模块* 两部分，后续讲解的启动器和模块部分是基于资源目录追加的新规范而已。本章节以目录规范为主体，只枚举特殊文件的功能，核心启动器文件规范放到启动器章节补充，同时参考下边的基本阅读规则：
 
@@ -86,13 +84,13 @@ Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参�
 [options="header"]
 |====
 |类型|路径|功能
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|action|「zero-rbac」权限管理中 *操作管理* 配置目录。
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|authority|「zero-rbac」权限管理中 *授权管理* 配置目录。
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|atom/<name>/reference|「zero-atom」动态建模管理模型通道引用配置目录。
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|atom/<name>/rule|「zero-atom」动态建模标识规则配置目录。
-|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|atom/<name>/schema|「zero-atom」动态建模数据源Excel文件配置目录（Json格式依靠生成，放在哪个目录都无所谓）。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|action/|「zero-rbac」权限管理中 *操作管理* 配置目录。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|authority/|「zero-rbac」权限管理中 *授权管理* 配置目录。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|atom/<name>/reference/|「zero-atom」动态建模管理模型通道引用配置目录。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|atom/<name>/rule/|「zero-atom」动态建模标识规则配置目录。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|atom/<name>/schema/|「zero-atom」动态建模数据源Excel文件配置目录（Json格式依靠生成，放在哪个目录都无所谓）。
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/cn/|「zero-ambient」此处cn是平台运行语言（后端LANGUAGE字段，前端Z_LANGUAGE环境变量），cab目录和 link:http://www.vertxui.cn[Zero UI] 中的资源目录cab实现无缝映射（前后端统一路径）——通常该处加载路径配置在 X_MODULE 表结构中。
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/directory|「zero-ambient/zero-is」文档管理模块专用目录结构树数据源配置。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/directory/|「zero-ambient/zero-is」文档管理模块专用目录结构树数据源配置。
 |image:i-folder.png[,20] / image:i-yaml.svg[,20] 目录|codex/|「标准框架」后端验证器（Bean Validation）专用配置目录，增强型数据模型验证专用。
 |image:i-folder.png[,20] / image:i-bash.svg[,20] 目录|environment/|Zero Shell Framework默认存储交互式命令行。
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|dict/<type>/|字典类型元数据部分的 metadata 配置，type对应字典中的 S_TYPE
@@ -101,31 +99,31 @@ Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参�
 |image:i-key.png[,20] 文件|keys/ipc/rpc-server-keystore.jks|「zero-rbac」RPC安全模块专用的证书文件。
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|hybrid/|「模型」静态模型。
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|hybrid/workflow/|「模型」工作流模型。
-|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/integration|「zero-jet」（调试专用）集成通道模拟器，模拟集成端可执行单元测试。
-|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/job|「zero-jet」（调试专用）任务配置器，通常用与任务专用配置。
-|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/oob/cab|*@* / S_ACTION资源/操作配置数据目录。
-|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/oob/data|*@* / OOB业务数据目录。
-|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|init/oob/menu|*@* / （新版）菜单规划路由数据目录。
-|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|init/oob/modulat|*@* / （新版）模块化数据目录（和菜单规划配合）。
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|init/oob/module/crud|*@* / 模块化内部CRUD模板化配置文件，调用 *zero-crud*。
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|init/oob/module/ui|*@* / 单个模块界面列定义（静态模式）存储路径，动态模式调用 *zero-ui*。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/integration/|「zero-jet」（调试专用）集成通道模拟器，模拟集成端可执行单元测试。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/job/|「zero-jet」（调试专用）任务配置器，通常用与任务专用配置。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/oob/cab/|*@* / S_ACTION资源/操作配置数据目录。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/oob/data/|*@* / OOB业务数据目录。
+|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|init/oob/menu/|*@* / （新版）菜单规划路由数据目录。
+|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|init/oob/modulat/|*@* / （新版）模块化数据目录（和菜单规划配合）。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|init/oob/module/crud/|*@* / 模块化内部CRUD模板化配置文件，调用 *zero-crud*。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|init/oob/module/ui/|*@* / 单个模块界面列定义（静态模式）存储路径，动态模式调用 *zero-ui*。
 |image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/oob/role/|*@* / 分角色权限配置数据（可使用 *aj jperm* 生成各个角色权限数据。
-|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/oob/role/LANG.YU|*@* / 自定义角色权限数据目录。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|init/oob/role/LANG.YU/|*@* / 自定义角色权限数据目录。
 |image:i-bash.svg[,20] 文件|init/oob/role/run-perm.sh|*@* / 角色权限执行脚本。
 |image:i-msexcel.png[,20] 文件|init/oob/environment.ambient.xlsx|*@* 全局配置文件，对应 X_APP。
 |image:i-msexcel.png[,20] 文件|init/oob/environment.menus.xlsx|*@Deprecated* 全局扩展菜单文件。
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|init/permission/ui.menu|菜单权限配置文件（执行代码由系统生成）。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|init/permission/ui.menu/|菜单权限配置文件（执行代码由系统生成）。
 |image:i-json.svg[,20] 文件|init/permission/ui.menu/ZERO_MENU_DISPLAY.json|人工可读菜单数据源，生成不同角色菜单专用。
 |image:i-json.svg[,20] 文件|init/permission/ui.menu/ZERO_MENU_SYSTEM.json|系统加载菜单数据源，生成不同角色菜单专用。
 |image:i-yaml.svg[,20] 文件|init/database.yml|（表生成主入口）Liquibase专用生成数据表配置文件。
 |image:i-json.svg[,20] 文件|init/environment.json|租户环境全局配置文件（AppId, Sigma, AppKey）。
 |image:i-liquibase.svg[,20] 文件|init/liquibase.properties|Liquibase数据库配置文件。
-|image:i-folder.png[,20] / image:i-java.png[,20] 目录|META-INF/services|ServiceLoader专用配置文件夹，Java规范。
-|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|modulat|模块化专用配置目录。
-|image:i-folder.png[,20] / image:i-plugin.svg[,20] 目录|plugin|插件专用目录。
-|image:i-folder.png[,20] / image:i-pojo.png[,20] 目录|pojo|模型专用映射配置文件。
-|image:i-folder.png[,20] / image:i-runtime.svg[,20] 目录|runtime|运行时专用目录。
-|image:i-folder.png[,20] / image:i-workflow.png[,20] 目录|workflow|工作流定义专用目录。
+|image:i-folder.png[,20] / image:i-java.png[,20] 目录|META-INF/services/|ServiceLoader专用配置文件夹，Java规范。
+|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|modulat/|模块化专用配置目录。
+|image:i-folder.png[,20] / image:i-plugin.svg[,20] 目录|plugin/|插件专用目录。
+|image:i-folder.png[,20] / image:i-pojo.png[,20] 目录|pojo/|模型专用映射配置文件。
+|image:i-folder.png[,20] / image:i-runtime.svg[,20] 目录|runtime/|运行时专用目录。
+|image:i-folder.png[,20] / image:i-workflow.png[,20] 目录|workflow/|工作流定义专用目录。
 |image:i-workflow-design.png[,20] 文件|workflow/<name>/workflow.pbmn|BPMN工作流定义文件。
 |image:i-json.svg[,20] 文件|workflow/<name>/*.json|工作流节点表单定义文件。
 |image:i-form.svg[,20] 文件|workflow/<name>/*.form|工作流节点表单文件，BPMN表单元数据定义文件。
@@ -150,15 +148,15 @@ aj jmod -p src/main/resources/plugin/hotel/oob
 [options="header"]
 |====
 |类型|路径|说明
-|image:i-folder.png[,20] 目录|/script|数据库初始化专用目录（遗留，就不参考最新标准执行）。
-|image:i-xml.png[,20] 文件|/script/code/config/zero-jooq.xml|image:task-risk.png[,16] Jooq数据库生成代码的基础配置文件。
-|image:i-bash.svg[,20] 文件|/script/code/zero.jooq.sh|Jooq数据库生成代码执行脚本，参考Zero教程下载依赖 jar 文件到该目录。
-|image:i-bash.svg[,20] 文件|/script/database/database-reinit.sh|执行数据库建库脚本，被根目录 init-db.sh 调用。
-|image:i-sql.png[,20]文件|/script/database/database-reinit.sql|执行数据库建库SQL脚本，被 database-reinit.sh 调用。
-|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|/src/main/java/|（Maven）Java代码文件。
-|image:i-folder.png[,20] / image:i-config.png[,20] 目录|/src/main/resources/|（Maven）Java类路径、资源文件。
-|image:i-bash.svg[,20] 文件|/init.db.sh|初始化数据库专用入口脚本。
-|image:i-bash.svg[,20] 文件|/init-module.sh|模块化数据文件部署专用配置脚本。
+|image:i-folder.png[,20] 目录|script/|数据库初始化专用目录（遗留，就不参考最新标准执行）。
+|image:i-xml.png[,20] 文件|script/code/config/zero-jooq.xml|image:task-risk.png[,16] Jooq数据库生成代码的基础配置文件。
+|image:i-bash.svg[,20] 文件|script/code/zero.jooq.sh|Jooq数据库生成代码执行脚本，参考Zero教程下载依赖 jar 文件到该目录。
+|image:i-bash.svg[,20] 文件|script/database/database-reinit.sh|执行数据库建库脚本，被根目录 init-db.sh 调用。
+|image:i-sql.png[,20]文件|script/database/database-reinit.sql|执行数据库建库SQL脚本，被 database-reinit.sh 调用。
+|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|src/main/java/|（Maven）Java代码文件。
+|image:i-folder.png[,20] / image:i-config.png[,20] 目录|src/main/resources/|（Maven）Java类路径、资源文件。
+|image:i-bash.svg[,20] 文件|init.db.sh|初始化数据库专用入口脚本。
+|image:i-bash.svg[,20] 文件|init-module.sh|模块化数据文件部署专用配置脚本。
 |====
 
 [IMPORTANT]
@@ -202,20 +200,20 @@ aj jmod -p src/main/resources/plugin/hotel/oob
 [options="header"]
 |====
 |类型|路径|功能
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|action|（略）
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|authority|（略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|action/|（略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|authority/|（略）
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/cn/|（略）
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/directory|（略）
-|image:i-folder.png[,20] / image:i-java.png[,20] 目录|META-INF/services|（略）
-|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|modulat|（略）
-|image:i-folder.png[,20] / image:i-plugin.svg[,20] 目录|plugin|（略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/directory/|（略）
+|image:i-folder.png[,20] / image:i-java.png[,20] 目录|META-INF/services/|（略）
+|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|modulat/|（略）
+|image:i-folder.png[,20] / image:i-plugin.svg[,20] 目录|plugin/|（略）
 |image:i-folder.png[,20] / image:i-java.svg[,20] 目录|plugin/commerce/oob/|模块核心配置数据目录，此处模块名称为：commerce，所以目录名也为 commerce。
-|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|plugin/commerce/oob/cab|*@* / （略）只包含管理员角色权限数据。
-|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|plugin/commerce/oob/data|*@* / （略）
-|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|plugin/commerce/oob/menu|*@* / （略）
-|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|plugin/commerce/oob/modulat|*@* / （略）
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|plugin/commerce/oob/module/crud|*@* / （略）
-|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|plugin/commerce/oob/module/ui|*@* / （略）
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|plugin/commerce/oob/cab/|*@* / （略）只包含管理员角色权限数据。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|plugin/commerce/oob/data/|*@* / （略）
+|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|plugin/commerce/oob/menu/|*@* / （略）
+|image:i-folder.png[,20] / image:i-node.svg[,20] 目录|plugin/commerce/oob/modulat/|*@* / （略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|plugin/commerce/oob/module/crud/|*@* / （略）
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|plugin/commerce/oob/module/ui/|*@* / （略）
 |image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|plugin/commerce/oob/role/|*@* / （略）只包含管理员角色权限数据。
 |image:i-node.svg[,20] 文件|plugin/commerce/oob/initialize.json|初始化配置，使用 *aj jmod* 可自动生成。
 |image:i-yaml.svg[,20] 文件|plugin/commerce/oob/initialize.yml|Jooq Dao配置，连接模块中需要导数据的模型配置。
@@ -223,8 +221,8 @@ aj jmod -p src/main/resources/plugin/hotel/oob
 |image:i-folder.png[,20] / image:i-sql.png[,20] 目录|plugin/sql/commerce/|该模块包含的表SQL定义（liquibase会加载所有SQL文件）。
 |image:i-liquibase.svg[,20] 文件|plugin/sql/commerce.properties|「开发过程专用」Liquibase数据库配置文件。
 |image:i-yaml.svg[,20] 文件|plugin/sql/commerce.yml|（模块表生成入口）Liquibase专用生成数据表配置文件。
-|image:i-folder.png[,20] / image:i-pojo.png[,20] 目录|pojo|（略）
-|image:i-folder.png[,20] / image:i-workflow.png[,20] 目录|workflow|（略）
+|image:i-folder.png[,20] / image:i-pojo.png[,20] 目录|pojo/|（略）
+|image:i-folder.png[,20] / image:i-workflow.png[,20] 目录|workflow/|（略）
 |====
 
 模块内资源结构基本和原始资源结构是保持一致，除开 *plugin* 内部有近似的部分，最终会导致所有模块运行在同一个环境中时，所有模块可以协同，不会出现系统匿名读取交叉配置的情况发生，这也是Zero Extension的核心设计思路。模块和模块之间由于目录不同所以相当于在主目录上挂载不同模块信息而已，如：
@@ -256,26 +254,267 @@ aj jmod -p src/main/resources/plugin/hotel/oob
 
 1. 全项目编译，运行根项目中的 *build.sh/build.bat* 脚本。
 2. 基础设施准备：此准备过程参考环境搭建章节，主要是为项目初始化 *数据库、云环境、第三方集成等*，推荐使用 Terraform 模式。
-3. 配置数据准备：这是新版最大改动，直接运行启动器下的 *run-ansible.sh/run-ansible.bat* 脚本执行。
+3. 配置数据准备：这是新版最大改动，直接运行启动器下的 *run-ansible.sh/run-ansible.bat* 脚本执行一键配置。
 
 先看启动器项目的目录结构：
 
 [options="header"]
 |====
 |类型|路径|功能
-|image:i-folder.png[,20]目录|app@history|历史配置、测试配置、验证配置目录，无实际使用价值，可理解成回收站。
-|image:i-folder.png[,20]目录|app@jar|从指令集中单独编译出来的可执行小工具，小工具通常在开发或生产中使用。
-|image:i-folder.png[,20]目录|app@runtime|自动化运行时：包括自动化配置（开发环境）、自动化部署（生产环境）。
-|image:i-folder.png[,20]目录|app@runtime/@source|自动化运行组件共享数据目录。
-|image:i-folder.png[,20] / image:i-key.png[,20]目录|keys|证书目录。
-|image:i-folder.png[,20] / image:i-key.png[,20]目录|keys/ipc|微服务通信证书目录。
-|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|/src/main/java/|（Maven）Java代码文件。
-|image:i-folder.png[,20] / image:i-config.png[,20] 目录|/src/main/resources/|（Maven）Java类路径、资源文件。
-|image:i-folder.png[,20] / image:i-junit.png[,20] 目录|/src/test/java/|（Maven）Java测试代码文件。
-|image:i-folder.png[,20] / image:i-config-t.png[,20] 目录|/src/test/resources/|（Maven）Java测试类路径、资源文件。
-
+|image:i-folder.png[,20] 目录|app@history/|历史配置、测试配置、验证配置目录，无实际使用价值，可理解成回收站。
+|image:i-folder.png[,20] 目录|app@jar/|从指令集中单独编译出来的可执行小工具，小工具通常在开发或生产中使用。
+|image:i-folder.png[,20] 目录|app@runtime/|自动化运行时：包括自动化配置（开发环境）、自动化部署（生产环境）。
+|image:i-folder.png[,20] 目录|app@runtime/@source/|自动化运行组件共享数据目录。
+|image:i-folder.png[,20] / image:i-key.png[,20] 目录|keys/|证书目录。
+|image:i-folder.png[,20] / image:i-key.png[,20] 目录|keys/ipc/|微服务通信证书目录。
+|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|src/main/java/|（Maven）Java代码文件。
+|image:i-folder.png[,20] / image:i-config.png[,20] 目录|src/main/resources/|（Maven）Java类路径、资源文件。
+|image:i-folder.png[,20] / image:i-junit.png[,20] 目录|src/test/java/|（Maven）Java测试代码文件。
+|image:i-folder.png[,20] / image:i-config-t.png[,20] 目录|src/test/resources/|（Maven）Java测试类路径、资源文件。
+|image:i-env.svg[,20] 文件|env.development.tpl|「模板」开发专用模板文件。
+|image:i-git.svg[,20] 文件|.gitignore|Git Ignore配置文件。
+|image:i-pom.svg[,20] 文件|pom.xml|Maven配置文件。
+|image:i-bash.svg[,20] 文件|run.ansible.sh|（一键配置入口）Ansible执行脚本。
+|image:i-config.svg[,20] 文件|run.env.sh.tpl|「模板」一键部署专用模板文件。
 |====
+
+[IMPORTANT]
+====
+新版启动器中引入了 *脱敏* 机制，需要执行下边脚本将两个模板文件拷贝成正式文件（移除 .tpl 后缀）。
+
+[source,bash]
+----
+cp .env.development.tpl .env.development        # 运行时使用
+cp run-env.sh.tpl run-env.sh                    # 一键配置使用
+----
+
+*run-env.sh、.env.development* 两个文件中包含了数据库账号密码等敏感信息、个人开发配置信息，二者已记录到 .gitignore 中不提交，所以每个人在使用时直接从模板文件拷贝并填上自己环境中的信息即可（一般初始化工程目录时提供，之后就不再变更，即使个人变更也不会影响其他人）。
+====
 
 ===== 1.1.4.2.代码结构
 
+启动器中的基本结构是一致的，文件名都可以维持一致。
+
+[options="header"]
+|====
+|类全名|数据目录|说明
+|image:i-bug.png[,20] cn.vertxup.develop.LoadCab|init/oob/cab/ |（略）
+|image:i-bug.png[,20] cn.vertxup.develop.LoadCmdb|init/oob/cmdb/ |（略）
+|image:i-bug.png[,20] cn.vertxup.develop.LoadData|init/oob/data/ |（略）
+|image:i-bug.png[,20] cn.vertxup.develop.LoadEnvironment|init/oob/environment/ |（略）
+|image:i-java.png[,20] cn.vertxup.develop.LoadWf|workflow|工作流配置加载（导入工作流定义）
+|image:i-bug.png[,20] cn.vertxup.develop.LoadWfRule|activity-rule*.xlsx匹配文件|单独加载操作规则
+|image:i-java.png[,20] cn.vertxup.develop.MenuData|x|菜单数据查看
+|image:i-java.png[,20] cn.vertxup.develop.MenuOut|x|菜单数据输出（按角色分配输出，操作前文提到的角色数据）
+|image:i-bug.png[,20] cn.vertxup.develop.MenuPermission|x|菜单角色权限单独导入
+|image:i-java.png[,20] cn.vertxup.develop.ModInitializer|x|建模初始化：JSON -> Database
+|image:i-java.png[,20] cn.vertxup.develop.ModPre|x|建模准备：Excel -> JSON
+|image:i-bug.png[,20] cn.vertxup.develop.ModUi|identifier绑定数据|导入单个动态模型UI配置
+|image:i-runtime.svg[,20] cn.vertxup.ZoAgent||（开发专用）容器启动器
+|image:i-bug.png[,20] cn.vertxup.ZoDebug||（开发专用）通用调试器
+|image:i-run.png[,20] cn.vertxup.ZoEntry||生产环境主入口
+|image:i-config.svg[,20] cn.vertxup.ZoLoader||*@Deprecated*（开发专用）数据导入器，Ansible一键配置完成后可拿掉。
+|====
+
 ===== 1.1.4.3.资源结构
+
+启动器资源结构基本遵循前文提到的资源结构部分，但略微有些不同，此处主要针对资源目录中的特殊结构做一定说明（*文件集*）
+
+[options="header"]
+|====
+|类型|路径|功能
+|image:i-folder.png[,20] 目录|aeon|Zero Aeon云平台专用配置目录。
+|image:i-yaml.svg[,20] 文件|aeon/zapp.yml|Zero Aeon云平台连接模块主接口。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|init/|（略）
+|image:i-folder.png[,20] / image:i-plugin.svg[,20] 目录|plugin/|（略）
+|image:i-folder.png[,20] / image:i-pojo.png[,20] 目录|pojo/|（略）
+|image:i-folder.png[,20] / image:i-runtime.svg[,20] 目录|runtime/|（略）
+|image:i-logback.png[,20] 文件|logback.xml|运行日志配置（Logback）
+|image:i-config.svg[,20] 文件|vertx.yml|「内联」Zero容器主配置
+|image:i-bug.png[,20] 文件|vertx-error.yml|「内联」Zero容错配置（系统级）
+|image:i-bug.png[,20] 文件|vertx-readible.yml|「内联」Zero容错配置（用户级）
+|image:i-plugin.svg[,20] 文件|vertx-inject.yml|「内联」Zero核心插件配置
+|image:i-config.png[,20] 文件|vertx-deployment.yml|扩展配置：Agent、Worker路由配置、开发调试配置、跨域配置
+|image:i-config.png[,20] 文件|vertx-detect.yml|扩展配置：Jooq、Camunda、缓存、Trash删除备份、Redis、ES、Neo4j、组件监控
+|image:i-config.png[,20] 文件|vertx-dock.yml|扩展配置：模块化部分/模块导入、初始化、加载、扩展组件
+|image:i-config.png[,20] image:i-key.png[,20] 文件|vertx-secure.yml|扩展配置：安全模块扩展
+|image:i-config.png[,20] image:i-msexcel.png[,20] 文件|vertx-excel.yml|扩展配置：Excel导入导出扩展
+|image:i-config.png[,20] image:i-bash.svg[,20] 文件|vertx-shell.yml|扩展配置：Zero Shell框架，交互式命令行
+|====
+
+扩展配置在 *vertx.yml* 的注释部分也包含相关说明：
+
+[source,bash]
+----
+  # 标准配置（不引入的）
+  # - vertx-inject.yml      插件
+  # - vertx-error.yml       系统错误定义
+  # - vertx-readible.yml    人工错误定义
+  # - vertx-server.yml      服务器（容器级）
+  # 扩展配置（完整）
+  # - vertx-excel.yml       Excel导入
+  #     excel
+  # - vertx-secure.yml      RBAC安全专用
+  #     secure
+  #     session
+  # - vertx-shell.yml       DevOps命令行工具
+  #     shell
+  # 应用配置（每个应用不同）
+  # - vertx-deployment.yml  开发部署（Agent、Worker、跨域、开发）
+  #     cors                  跨域配置
+  #     router                Agent路由
+  #     deployment            Worker配置
+  #     develop               开发专用配置
+  # - vertx-detect.yml      集成（数据库、Redis、工作流、缓存、监控）
+  #     jooq                  Jooq数据库访问
+  #     workflow              Camunda工作流引擎
+  #     cache                 缓存
+  #     trash                 删除备份专用
+  #     redis                 分布式缓存（配合缓存机制）
+  #     elasticsearch         ES搜索服务
+  #     neo4j                 Neo4J图数据库
+  #     monitor               组件监控
+  # - vertx-dock.yml        模块化（启动连接、初始化连接、模块加载、扩展组件）
+  #     boot                  模块导入
+  #     init                  模块初始化
+  #     module                模块化加载
+  #     extension             扩展组件
+----
+
+===== 1.1.4.4.容器启动
+
+容器启动主要注意下边界面的参数配置界面：
+
+image::workflow-boot.jpeg[,1024]
+
+[CAUTION]
+====
+1. 默认IDEA工作目录会是您的根项目（如图：hotel），此处应该修改成当前App的运行目录（*启动器根目录*）。
+2. 在开发环境中（监测到 .env.development），由于设置了环境变量，JDK9.0+的版本中，需在JVM Options中追加：
++
+--
+[source,bash]
+----
+--add-opens java.base/java.lang=ALL-UNNAMED --add-opens java.base/java.util=ALL-UNNAMED
+----
+--
+====
+
+最终启动成功之后您会在终端看到如下信息：
+
+[source,bash]
+----
+( Http Server ) ZeroHttpAgent Http Server has been started successfully. Endpoint: http://198.18.15.157:7085/.
+----
+
+===== 1.1.4.5.环境变量
+
+系统默认的环境变量文件参考代码注释
+
+_.env.development_
+
+[source,properties]
+----
+# --------------------- 环境变量专用区域 -----------------------
+# 「Aeon」
+# 云端资源环境变量
+# -- 国外GitHub：  https://github.com/silentbalanceyh/vertx-zero-cloud.git
+# -- 国内Gitee：   https://gitee.com/silentbalanceyh/vertx-zero-cloud.git
+#
+# AEON_CLOUD：基础资源专用环境变量（vertx-zero-cloud）
+# -- 工作目录（一般是直接下载后的zero cloud工作目录）
+# AEON_APP：应用资源专用目录（出厂设置，云设置）
+#
+# 这两个目录在容器内都需要支持共享模式，通过K8S的部署实现ConfigMap级别的分布式存储
+# 共享，以确保环境中每一类应用的目录是固定的，这种模式下，路径协议变得很重要，此处
+# 的路径必须支持路径协议，路径协议是高层处理，根据当前容器使用的SC决定。
+# 默认路径规定：
+#
+AEON_CLOUD=/Users/lang/zero-cloud/vertx-zero-cloud/
+AEON_APP=/Users/lang/zero-cloud/cloud-hotel/
+
+# 「Zero」
+# 应用级/应用级
+# Z_APP：应用程序的code，作为系统路径，或表中的name字段对应
+# Z_APP有了过后可以直接通过此一个数值决定其最终运行的环境值
+# Z_APP对应的属性
+# -- 语言                 多语言
+# -- Sigma标识            多应用
+# -- TenantID标识         多租户
+# -- 前端路由               前端入口
+# -- 后端路由               后端入口
+
+# 「Container」
+# Z_NS：             名空间信息
+# Z_SIGMA：          统一标识符
+# Z_LANG：           语言信息
+# Z_NS=xxx
+# Z_SIGMA=xxx
+# X_LANG=cn
+Z_APP=app.micro.hotel
+
+# 「Deployment」
+# 容器环境专用变量
+# ----------------------- 跨域
+Z_CORS_DOMAIN=http://ox.server.cn:7005
+
+# ----------------------- RESTful
+# Z_API_HOST: 主机地址，0.0.0.0表示任意IP都可访问
+# Z_API_PORT: 后端端口
+# Z_API_HOST=0.0.0.0
+Z_API_PORT=7085
+
+# ----------------------- Sock
+# Z_SOCK_HOST: 主机地址，0.0.0.0
+# Z_SOCK_PORT: 端口（默认直接挂在API上）
+# Z_SOCK_HOST=0.0.0.0
+# Z_SOCK_PORT=7085
+
+# ----------------------- DB Service
+# Z_DBS_HOST: 数据库连接主机地址
+# Z_DBS_PORT: 数据库端口
+# Z_DBS_INSTANCE：数据库实例名
+# Z_DBS_HOST=ox.engine.cn
+# Z_DBS_PORT=3306
+# Z_DBS_INSTANCE=DB_HOTEL
+
+# ----------------------- DB Workflow
+# Z_DBW_HOST: 数据库连接主机地址
+# Z_DBW_PORT: 数据库端口
+# Z_DBW_INSTANCE：数据库实例名
+# Z_DBW_HOST=ox.engine.cn
+# Z_DBW_PORT=3306
+# Z_DBW_INSTANCE=DB_HOTEL_WF
+
+# ----------------------- DB History
+# Z_DBH_HOST: 数据库连接主机地址
+# Z_DBH_PORT: 数据库端口
+# Z_DBH_INSTANCE：数据库实例名
+# Z_DBH_HOST=ox.engine.cn
+# Z_DBH_PORT=3306
+# Z_DBH_INSTANCE=DB_HOTEL_HIS
+----
+
+_run.env.sh_
+
+[source,bash]
+----
+#!/usr/bin/env bash
+# 设置数据库类型（根据数据库类型执行不同流程）
+# - 1) 现阶段脚本类型只支持 TIDB 和 MYSQL
+# - 2) 远程机中已经部署了 mvn / java / mysql 三种命令
+# - 3) 远程机中 non-shell 的环境变量已和 shell 登录模式保持了一致
+#      检查远程环境中的 ~/.bashrc 中是否已包含了 mvn / java / mysql 三个命令的基础环境变量
+# - 4) 默认数据库账号使用 zero，此处 DB_PASSWORD 对应的是 zero 的密码
+# - 5) 默认 DB_ENV = DEV（开发测试环境）
+# TIDB / MYSQL
+export DB_TYPE=MYSQL
+export DB_PASSWORD=
+export DB_ENV=DEV
+----
+
+[TIP]
+====
+此处设置的 DB_PASSWORD 不是 *root* 账号，而是系统默认的 *zero* 账号，您可以在第二章节中查看详细细节。
+====
+
