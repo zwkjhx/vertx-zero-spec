@@ -43,7 +43,7 @@ image::spec-backend.png[脚手架,1280]
 通常一个小的应用或微服务模块仅提供一个 *nd-commerce* 就够用了，但在某些复杂的管理系统中，模块本身由单机演化而来，配合集成、插件、遗留升级等各种操作，具体架构方向是往上下两头拉开，形成下层（基础层 *nd-down* ）和上层（业务层 *nd-up* ），这样的结构在目前案例中持续存在且证明是行之有效的。对整个系统的微架构而言，不推荐拆分太多层级模块，理论上 *nd-module* 中的所有模块都是平行的。
 ====
 
-==== 1.1.2.根项目结构（nd）
+===== 1.1.1.1.根项目结构（nd）
 
 Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参考下边的 *pom.xml*：
 
@@ -75,14 +75,85 @@ Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参�
 3. License/作者/仓库版权等相关信息。
 ====
 
+===== 1.1.1.2.资源目录
+
+[WARNING]
+====
+资源目录规范属于Zero Extension部分的内容，主要应用于 *启动器* 和 *模块* 两部分，后续讲解的启动器和模块部分是基于资源目录追加的新规范而已。
+====
+
+[options="header"]
+|====
+|类型|路径|说明
+|
+|====
 
 ==== 1.1.3.模块结构（nd-commerce）
 
-===== 1.1.3.1.基础结构
+[TIP]
+====
+若您安装了 *vertx-ai* 工具，可直接使用下边命令执行模块数据标准化生成所需的 initialize.json 文件（实践证明这个文件手写特别费时），您可以在任意时间段修改Excel配置数据内容包括文件删减，最终该命令会根据数据包中的内容执行配置文件标准化。
 
-===== 1.1.3.2.配置结构
+[source,bash]
+----
+# init-modulat.sh 脚本的内容
+aj jmod -p src/main/resources/plugin/hotel/oob
+----
+====
 
-===== 1.1.3.3.包结构
+模块的基本结构如下（带 image:task-risk.png[,16] 为开发命令时有修改内容的部分）：
+
+[options="header"]
+|====
+|类型|路径|说明
+|目录|/script|数据库初始化专用目录（遗留，就不参考最新标准执行）。
+|文件|/script/code/config/zero-jooq.xml|image:task-risk.png[,16] Jooq数据库生成代码的基础配置文件。
+|文件|/script/code/zero.jooq.sh|Jooq数据库生成代码执行脚本，参考Zero教程下载依赖 jar 文件到该目录。
+|文件|/script/database/database-reinit.sh|执行数据库建库脚本，被根目录 init-db.sh 调用。
+|文件|/script/database/database-reinit.sql|执行数据库建库SQL脚本，被 database-reinit.sh 调用。
+|目录|/src/main/|（Maven）Java代码文件。
+|目录|/src/resources/|（Maven）Java类路径、资源文件。
+|文件|/init.db.sh|初始化数据库专用入口脚本。
+|文件|/init-module.sh|模块化数据文件部署专用配置脚本。
+|====
+
+[IMPORTANT]
+====
+1. */script/code/* 目录中存放的JAR可从此处下载，link:https://pan.baidu.com/s/1Ism2yoxfL7EnMyqsaPqRvg[Zero Framework] 提取码: m99k，根据您的不同版本自己选择（推荐最新版，JDK 17+）。
+2. */script/database/* 目录中的脚本一般不用处理，最终会生成数据库：DB_ETERNAL，然后可执行代码生成并对接到数据库配置中，之后这个库就可直接移除。
+3. */init-module.sh* 只有在更改模块配置的时候用。
+====
+
+===== 1.1.3.1.代码结构
+
+模块代码基础包结构如：
+
+[TIP]
+====
+- （上层）此处 cn.vertxup.xx 是Zero扫描入口（RESTful），一般不改动。
+- （下层）此处 com.<domain> 是Java规范中常用的按公司开发的模块包（核心业务逻辑）。
+====
+
+[options="header"]
+|====
+|包名|说明
+|cn.vertxup.nd|接口层根包
+|cn.vertxup.nd.cv|常量池：@Address地址常量包，Pojo映射规范基础映射包。
+|cn.vertxup.nd.ke.booter|模块化配置器入口。
+|cn.vertxup.nd.micro|RESTful入口，@Endpoint/@Queue专用定义包，类似Spring中的@Controller。
+|cn.<domain>|模块核心组件包（业务逻辑）
+|cn.<domain>.atom|模型库：自定义建模（EMF或静态）包。
+|cn.<domain>.domain|实体库：*Jooq自动生成*，表模型。
+|cn.<domain>.error|容错定义：基于Zero容错框架的自定义异常信息。
+|cn.<domain>.optic|扩展槽：基于 ServiceLoader 扩展专用实现包、插件包。
+|cn.<domain>.refine|工具库：一般开放一个 *双字母* 类，做统一出口（类似Ux/Ut/Fn）。
+|cn.<domain>.service|业务层：类似Spring中的@Service。
+|cn.<domain>.uca|自定义组件：基于组件开发的核心组件包。
+|====
+
+===== 1.1.3.2.资源结构
+
+
 
 ==== 1.1.4.启动器（nd-app）
 

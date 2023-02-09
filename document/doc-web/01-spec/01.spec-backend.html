@@ -566,9 +566,8 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </tr>
 </table>
 </div>
-</div>
-<div class="sect3">
-<h4 id="_1_1_2_根项目结构nd">1.1.2.根项目结构（nd）</h4>
+<div class="sect4">
+<h5 id="_1_1_1_1_根项目结构nd">1.1.1.1.根项目结构（nd）</h5>
 <div class="paragraph">
 <p>Zero Framework中的所有根项目都是从 <strong>vertx-import</strong> 中导入的，参考下边的 <strong>pom.xml</strong>：</p>
 </div>
@@ -638,18 +637,239 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </table>
 </div>
 </div>
+<div class="sect4">
+<h5 id="_1_1_1_2_资源目录">1.1.1.2.资源目录</h5>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>资源目录规范属于Zero Extension部分的内容，主要应用于 <strong>启动器</strong> 和 <strong>模块</strong> 两部分，后续讲解的启动器和模块部分是基于资源目录追加的新规范而已。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">类型</th>
+<th class="tableblock halign-left valign-top">路径</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+</table>
+</div>
+</div>
 <div class="sect3">
 <h4 id="_1_1_3_模块结构nd_commerce">1.1.3.模块结构（nd-commerce）</h4>
-<div class="sect4">
-<h5 id="_1_1_3_1_基础结构">1.1.3.1.基础结构</h5>
-
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>若您安装了 <strong>vertx-ai</strong> 工具，可直接使用下边命令执行模块数据标准化生成所需的 initialize.json 文件（实践证明这个文件手写特别费时），您可以在任意时间段修改Excel配置数据内容包括文件删减，最终该命令会根据数据包中的内容执行配置文件标准化。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash"># init-modulat.sh 脚本的内容
+aj jmod -p src/main/resources/plugin/hotel/oob</code></pre>
+</div>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>模块的基本结构如下（带 <span class="image"><img src="data:image/png;base64,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" alt="task risk" width="16"></span> 为开发命令时有修改内容的部分）：</p>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">类型</th>
+<th class="tableblock halign-left valign-top">路径</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">目录</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/script</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">数据库初始化专用目录（遗留，就不参考最新标准执行）。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/script/code/config/zero-jooq.xml</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="data:image/png;base64,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" alt="task risk" width="16"></span> Jooq数据库生成代码的基础配置文件。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/script/code/zero.jooq.sh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Jooq数据库生成代码执行脚本，参考Zero教程下载依赖 jar 文件到该目录。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/script/database/database-reinit.sh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">执行数据库建库脚本，被根目录 init-db.sh 调用。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/script/database/database-reinit.sql</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">执行数据库建库SQL脚本，被 database-reinit.sh 调用。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">目录</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/src/main/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（Maven）Java代码文件。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">目录</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/src/resources/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（Maven）Java类路径、资源文件。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/init.db.sh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">初始化数据库专用入口脚本。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/init-module.sh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">模块化数据文件部署专用配置脚本。</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><strong>/script/code/</strong> 目录中存放的JAR可从此处下载，<a href="https://pan.baidu.com/s/1Ism2yoxfL7EnMyqsaPqRvg">Zero Framework</a> 提取码: m99k，根据您的不同版本自己选择（推荐最新版，JDK 17+）。</p>
+</li>
+<li>
+<p><strong>/script/database/</strong> 目录中的脚本一般不用处理，最终会生成数据库：DB_ETERNAL，然后可执行代码生成并对接到数据库配置中，之后这个库就可直接移除。</p>
+</li>
+<li>
+<p><strong>/init-module.sh</strong> 只有在更改模块配置的时候用。</p>
+</li>
+</ol>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="sect4">
-<h5 id="_1_1_3_2_配置结构">1.1.3.2.配置结构</h5>
-
+<h5 id="_1_1_3_1_代码结构">1.1.3.1.代码结构</h5>
+<div class="paragraph">
+<p>模块代码基础包结构如：</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>（上层）此处 cn.vertxup.xx 是Zero扫描入口（RESTful），一般不改动。</p>
+</li>
+<li>
+<p>（下层）此处 com.&lt;domain&gt; 是Java规范中常用的按公司开发的模块包（核心业务逻辑）。</p>
+</li>
+</ul>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">包名</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.vertxup.nd</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">接口层根包</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.vertxup.nd.cv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">常量池：@Address地址常量包，Pojo映射规范基础映射包。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.vertxup.nd.ke.booter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">模块化配置器入口。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.vertxup.nd.micro</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">RESTful入口，@Endpoint/@Queue专用定义包，类似Spring中的@Controller。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.&lt;domain&gt;</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">模块核心组件包（业务逻辑）</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.&lt;domain&gt;.atom</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">模型库：自定义建模（EMF或静态）包。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.&lt;domain&gt;.domain</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">实体库：<strong>Jooq自动生成</strong>，表模型。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.&lt;domain&gt;.error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">容错定义：基于Zero容错框架的自定义异常信息。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.&lt;domain&gt;.optic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">扩展槽：基于 ServiceLoader 扩展专用实现包、插件包。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.&lt;domain&gt;.refine</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">工具库：一般开放一个 <strong>双字母</strong> 类，做统一出口（类似Ux/Ut/Fn）。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.&lt;domain&gt;.service</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">业务层：类似Spring中的@Service。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">cn.&lt;domain&gt;.uca</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">自定义组件：基于组件开发的核心组件包。</p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <div class="sect4">
-<h5 id="_1_1_3_3_包结构">1.1.3.3.包结构</h5>
+<h5 id="_1_1_3_2_资源结构">1.1.3.2.资源结构</h5>
 
 </div>
 </div>
@@ -672,7 +892,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-09 16:32:38 +0800
+Last updated 2023-02-09 17:16:43 +0800
 </div>
 </div>
 </body>
