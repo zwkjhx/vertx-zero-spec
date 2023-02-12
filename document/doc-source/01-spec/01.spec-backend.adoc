@@ -415,9 +415,9 @@ image::workflow-boot.jpeg[,1024]
 
 ===== 1.1.4.5.环境变量
 
-系统默认的环境变量文件参考代码注释
+系统默认的环境变量文件此处提供代码注释
 
-_.env.development_
+_.env.development_ / _.env.development.tpl_
 
 [source,properties]
 ----
@@ -499,9 +499,38 @@ Z_API_PORT=7085
 # Z_DBH_HOST=ox.engine.cn
 # Z_DBH_PORT=3306
 # Z_DBH_INSTANCE=DB_HOTEL_HIS
+
+# ----------------------- HED 模块（必须）
+Z_HED_ENABLED=true
 ----
 
-_run.env.sh_
+[options="header"]
+|====
+|环境变量名|说明
+|AEON_CLOUD|基础资源专用目录，通常是 link:https://gitee.com/silentbalanceyh/vertx-zero-cloud[Cloud工具箱,window="_blank"] 从Gitee下载后的项目内容空间。
+|AEON_APP|应用资源专用目录，当开启Aeon系统时，每个应用都会配套一个云端仓库地址，和前后端独立，该地址下载到本地之后使用此环境变量指定相关位置。
+|Z_APP|和前端一致指定当前运行的应用名称，对应 X_APP 中的 NAME 字段值。
+|Z_NS|应用名空间信息（开启zero-jet动态接口、任务之后必须使用该变量标识组件所属名空间）。
+|Z_SIGMA|统一标识符
+|Z_LANGE|当前系统使用的语言信息（默认cn）
+|Z_CROS_DOMAIN|（协同）开发过程指定当前应用前端跨域允许地址。
+|Z_HED_ENABLE|HED加密模块设置，默认关闭，开启之后所有配置节点中的密码需使用密文。
+|Z_API_HOST|「RESTful」后端指定Web服务器绑定IP地址，默认 0.0.0.0，无限制。
+|Z_API_PORT|「RESTful」开发协同、后端指定Web服务器端口。
+|Z_SOCK_HOST|「WebSocket」后端指定Sock服务器绑定IP地址，默认 0.0.0.0，无限制。
+|Z_SOCK_PORT|「WebSocket」开发协同、后端指定Sock服务器端口。
+|Z_DBS_HOST|「标准」数据库连接主机地址。
+|Z_DBS_PORT|「标准」开发协同、数据库端口号。
+|Z_DBS_INSTANCE|「标准」数据库实例名。
+|Z_DBW_HOST|「工作流」数据库连接主机地址。
+|Z_DBW_PORT|「工作流」开发协同、数据库端口号。
+|Z_DBW_INSTANCE|「工作流」数据库实例名。
+|Z_DBH_HOST|「历史」数据库连接主机地址。
+|Z_DBH_PORT|「历史」开发协同、数据库端口号。
+|Z_DBH_INSTANCE|「历史」数据库实例名。
+|====
+
+_run.env.sh_ / _run.env.sh.tpl_
 
 [source,bash]
 ----
@@ -523,10 +552,21 @@ export DB_ATOM=
 export Z_HED_ENABLED=
 ----
 
+[options="header"]
+|====
+|环境变量名|说明
+|DB_TYPE|指定当前应用使用的数据库类型（不同类型脚本执行流程不一样），MYSQL、TIDB、PGSQL。
+|DB_PASSWORD|初始化数据库账号过程中使用的 zero 账号的密码。
+|DB_ENV|指定自动化部署的环境，DEV：开发部署，PROD：生产部署。
+|DB_ATOM|当前应用若开启了动态建模模块，则设置动态建模的应用名称（通常只有一个，若：cmdb），最终系统会从数据源目录：src/main/resources/atom/<DB_ATOM>/meta 中读取所有建模专用的Excel配置文件。
+|Z_HED_ENABLED|（同上）
+|====
+
 [CAUTION]
 ====
 1. 此处设置的 DB_PASSWORD 不是 *root* 账号，而是系统默认的 *zero* 账号，您可以在第二章节中查看详细细节。
 2. DB_ATOM主要控制动态建模（*步骤六*），开启 zero-atom 动态建模流程，默认不开启。
 3. Z_HED_ENABLED控制系统中的数据库密码是否启用HED模块执行密码加密，若启用则密码必须以密文形式存放在配置文件中（否则使用明文，默认模式）。
+4. Z_HED_ENABLED环境变量还需注意的是开发模式下 .env.development 环境变量启动文件中必须相同设置，否则启动时候会连接数据库失败。
 ====
 

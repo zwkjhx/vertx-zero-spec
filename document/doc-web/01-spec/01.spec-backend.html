@@ -1718,10 +1718,10 @@ cp run-env.sh.tpl run-env.sh                    # 一键配置使用</code></pre
 <div class="sect4">
 <h5 id="_1_1_4_5_环境变量">1.1.4.5.环境变量</h5>
 <div class="paragraph">
-<p>系统默认的环境变量文件参考代码注释</p>
+<p>系统默认的环境变量文件此处提供代码注释</p>
 </div>
 <div class="paragraph">
-<p><em>.env.development</em></p>
+<p><em>.env.development</em> / <em>.env.development.tpl</em></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1802,11 +1802,112 @@ Z_API_PORT=7085
 # Z_DBH_INSTANCE：数据库实例名
 # Z_DBH_HOST=ox.engine.cn
 # Z_DBH_PORT=3306
-# Z_DBH_INSTANCE=DB_HOTEL_HIS</code></pre>
+# Z_DBH_INSTANCE=DB_HOTEL_HIS
+
+# ----------------------- HED 模块（必须）
+Z_HED_ENABLED=true</code></pre>
 </div>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">环境变量名</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AEON_CLOUD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">基础资源专用目录，通常是 <a href="https://gitee.com/silentbalanceyh/vertx-zero-cloud" target="_blank" rel="noopener">Cloud工具箱</a> 从Gitee下载后的项目内容空间。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">AEON_APP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应用资源专用目录，当开启Aeon系统时，每个应用都会配套一个云端仓库地址，和前后端独立，该地址下载到本地之后使用此环境变量指定相关位置。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_APP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">和前端一致指定当前运行的应用名称，对应 X_APP 中的 NAME 字段值。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_NS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应用名空间信息（开启zero-jet动态接口、任务之后必须使用该变量标识组件所属名空间）。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_SIGMA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">统一标识符</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_LANGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">当前系统使用的语言信息（默认cn）</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_CROS_DOMAIN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（协同）开发过程指定当前应用前端跨域允许地址。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_HED_ENABLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HED加密模块设置，默认关闭，开启之后所有配置节点中的密码需使用密文。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_API_HOST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「RESTful」后端指定Web服务器绑定IP地址，默认 0.0.0.0，无限制。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_API_PORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「RESTful」开发协同、后端指定Web服务器端口。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_SOCK_HOST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「WebSocket」后端指定Sock服务器绑定IP地址，默认 0.0.0.0，无限制。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_SOCK_PORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「WebSocket」开发协同、后端指定Sock服务器端口。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBS_HOST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「标准」数据库连接主机地址。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBS_PORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「标准」开发协同、数据库端口号。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBS_INSTANCE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「标准」数据库实例名。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBW_HOST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「工作流」数据库连接主机地址。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBW_PORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「工作流」开发协同、数据库端口号。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBW_INSTANCE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「工作流」数据库实例名。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBH_HOST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「历史」数据库连接主机地址。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBH_PORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「历史」开发协同、数据库端口号。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBH_INSTANCE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">「历史」数据库实例名。</p></td>
+</tr>
+</tbody>
+</table>
 <div class="paragraph">
-<p><em>run.env.sh</em></p>
+<p><em>run.env.sh</em> / <em>run.env.sh.tpl</em></p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -1828,6 +1929,40 @@ export DB_ATOM=
 export Z_HED_ENABLED=</code></pre>
 </div>
 </div>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">环境变量名</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DB_TYPE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">指定当前应用使用的数据库类型（不同类型脚本执行流程不一样），MYSQL、TIDB、PGSQL。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DB_PASSWORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">初始化数据库账号过程中使用的 zero 账号的密码。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DB_ENV</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">指定自动化部署的环境，DEV：开发部署，PROD：生产部署。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DB_ATOM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">当前应用若开启了动态建模模块，则设置动态建模的应用名称（通常只有一个，若：cmdb），最终系统会从数据源目录：src/main/resources/atom/&lt;DB_ATOM&gt;/meta 中读取所有建模专用的Excel配置文件。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_HED_ENABLED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（同上）</p></td>
+</tr>
+</tbody>
+</table>
 <div class="admonitionblock caution">
 <table>
 <tr>
@@ -1846,6 +1981,9 @@ export Z_HED_ENABLED=</code></pre>
 <li>
 <p>Z_HED_ENABLED控制系统中的数据库密码是否启用HED模块执行密码加密，若启用则密码必须以密文形式存放在配置文件中（否则使用明文，默认模式）。</p>
 </li>
+<li>
+<p>Z_HED_ENABLED环境变量还需注意的是开发模式下 .env.development 环境变量启动文件中必须相同设置，否则启动时候会连接数据库失败。</p>
+</li>
 </ol>
 </div>
 </td>
@@ -1858,7 +1996,7 @@ export Z_HED_ENABLED=</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-12 09:48:36 +0800
+Last updated 2023-02-12 12:16:57 +0800
 </div>
 </div>
 </body>
