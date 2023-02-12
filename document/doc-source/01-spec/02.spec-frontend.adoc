@@ -3,11 +3,16 @@ ifndef::imagesdir[:imagesdir: ../images]
 
 === 1.3.前端结构规范
 
-前端项目主要基于 link::https://www.vertxui.cn[Zero UI] 框架进行定制和修改，您可以使用 *ai init* 命令执行此部分的初始化，最终生成的项目即为本章的核心项目结构。
+前端项目主要基于 link:https://www.vertxui.cn[Zero UI,windows="_blank"] 框架进行定制和修改，您可以使用 *ai init* 命令执行此部分的初始化，最终生成的项目即为本章的核心项目结构——即：*Zero UI前端脚手架*。
 
 [TIP]
 ====
-本文只枚举现阶段使用的脚本信息，不会对项目内的所有内容一一枚举，主要以讲解前端结构信息为主，不牵涉代码文件内容等相关信息。
+不改动的配置直接忽略不计，所有使用 *yarn eject* 出来的核心配置仅提供和Zero UI相关的配置信息，其他配置不在白皮书中讲解，您可以上网查询相关资料了解 *yarn eject* 命令结果的各文件职责。本规范三个章节的内容分别位于：
+
+- 项目结构：根目录说明
+- 自动化脚本：scripts目录说明
+- 源代码：src目录说明
+
 ====
 
 ==== 1.3.1.项目结构
@@ -15,9 +20,53 @@ ifndef::imagesdir[:imagesdir: ../images]
 [options="header"]
 |====
 |类型|路径|说明
-|
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|.zero/|Zero Ai工具默认工作目录，配合 link:https://www.vertxai.cn[Zero Ai] 工具箱工作。
+|image:i-folder.png[,20] / image:i-webpack.svg[,20] 目录|config/|Webpack主配置目录，该目录来源于 *yarn eject* 命令结果。
+|image:i-env.svg[,20] 文件|config/env.js|环境变量连接专用脚本文件，*.env.development / .env.production* 双环境选择脚本。
+|image:i-javascript.svg[,20] 文件|config/modules.js|前端模块化专用JS配置，Zero UI模块化的 *核心配置*。
+|image:i-webpack.svg[,20] 文件|config/webpack.config.js|前端Webpack主配置文件，Zero UI修改过的配置。
+|image:i-folder.png[,20] / image:i-asciidoc.svg[,20] 目录|document/|AsciiDoc文档服务器专用目录。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|document/doc-config/|JsDoc配置目录、AsciiDoc配置目录。
+|image:i-folder.png[,20] / image:i-asciidoc.svg[,20] 目录|document/doc-source/|AsciiDoc源代码目录。
+|image:i-folder.png[,20] / image:i-html5.svg[,20] 目录|document/doc-web/|（*git不提交*）HTML5生成的AsciiDoc可查看静态源码目录。
+|image:i-folder.png[,20] / image:i-html5.svg[,20] 目录|public/|应用静态站点目录，主骨架，包含了SPA入口：index.html。
+|image:i-folder.png[,20] / image:i-javascript.svg[,20] 目录|scripts/|Zero UI启动脚本。
+|image:i-folder.png[,20] / image:i-java.svg[,20] 目录|src/|Zero UI源代码目录。
+|image:i-babel.svg[,20] 文件|.babelrc|Babel专用转译配置文件，启用Babel环境的规范申明。
+|image:i-env.svg[,20] 文件|.env.development.tpl|协同开发环境环境变量模板文件（所有开发人员各自独立，使用时重命名）。
+|image:i-env.svg[,20] 文件|.env.production|生产环境变量文件。
+|image:i-eslint.svg[,20] 文件|.eslintignore|EsLint规范检查忽略文件，忽略声明的目录不做代码规范性检查。
+|image:i-git.svg[,20] 文件|.gitignore|（Zero UI定制）Git专用忽略文件，跳过声明文件不执行代码提交。
+|image:i-npm.svg[,20] 文件|package.json|项目基础信息定义文件。
+|image:i-markdown.svg[,20] 文件|README.md|首页Markdown介绍文件。
+|image:i-bash.svg[,20] 文件|run-cache.sh|清理缓存专用脚本。
+|image:i-bash.svg[,20] 文件|run-doc.sh|文档服务器，doc生成文档、server运行文档服务器。
+|image:i-bash.svg[,20] 文件|run-update.sh|包更新专用脚本。
+|image:i-bash.svg[,20] 文件|run-ux.sh|前端分发脚本。
+|image:i-cmd.svg[,20] 文件|run-zero.bat|Windows启动脚本。
+|image:i-bash.svg[,20] 文件|run-zero.sh|Linux/Unix启动脚本。
+|image:i-markdown.svg[,20] 文件|SUMMARY.md|Gitbook专用目录文件。
+|image:i-tsconfig.svg[,20] 文件|tsconfig.json|TypeScript配置文件。
 |====
 
-==== 1.3.2.源码结构
+==== 1.3.2.自动化脚本
 
-==== 1.3.3.自动化脚本
+[options="header"]
+|====
+|类型|路径|说明
+|image:i-javascript.svg[,20] 文件|scripts/build.js|生产构建专用脚本。
+|image:i-javascript.svg[,20] 文件|scripts/start.js|开发调试启动专用脚本。
+|image:i-jest.svg[,20] 文件|scripts/test.js|测试专用脚本。
+|image:i-json.svg[,20] 文件|scripts/zrun-package.json|包更新过滤设置，设置不更新的包，锁定版本专用。
+|image:i-javascript.svg[,20] 文件|scripts/zrun-route.js|自动化路由专用生成脚本。
+|====
+
+==== 1.3.3.源代码
+
+等待三个系统全部恢复后再调整！
+
+[options="header"]
+|====
+|类型|路径|说明
+|
+|====
