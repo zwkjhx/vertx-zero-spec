@@ -27,6 +27,7 @@ Scaffold项目的整体目录结构如下：
 |Maven类型|主项目|说明
 |image:i-pom.svg[,20] pom|nd|当前应用主项目（根项目）
 |image:i-jar.png[,20] jar|nd / nd-app|（入口）启动器
+|image:i-jar.png[,20] pom|nd / nd-infix|插件集
 |image:i-pom.svg[,20] pom|nd / nd-inst|辅助工具指令集（Instruction)，自动化工具包
 |image:i-jar.png[,20] jar|nd / nd-inst / nd-dpma|数据处理工具（原Loader）
 |image:i-pom.svg[,20] pom|nd / nd-module|模块包，包含当前应用所需的所有模块（对应BLOCK）
@@ -41,7 +42,7 @@ image::spec-backend.png[脚手架,1280]
 
 [CAUTION]
 ====
-通常一个小的应用或微服务模块仅提供一个 *nd-commerce* 就够用了，但在某些复杂的管理系统中，模块本身由单机演化而来，配合集成、插件、遗留升级等各种操作，具体架构方向是往上下两头拉开，形成下层（基础层 *nd-down* ）和上层（业务层 *nd-up* ），这样的结构在目前案例中持续存在且证明是行之有效的。对整个系统的微架构而言，不推荐拆分太多层级模块，理论上 *nd-module* 中的所有模块都是平行的。
+「*插件集没有位于图中*」通常一个小的应用或微服务模块仅提供一个 *nd-commerce* 就够用了，但在某些复杂的管理系统中，模块本身由单机演化而来，配合集成、插件、遗留升级等各种操作，具体架构方向是往上下两头拉开，形成下层（基础层 *nd-down* ）和上层（业务层 *nd-up* ），这样的结构在目前案例中持续存在且证明是行之有效的。对整个系统的微架构而言，不推荐拆分太多层级模块，理论上 *nd-module* 中的所有模块都是平行的。上述结构只是脚手架中提供的基础结构，您也可以根据实际需要进行调整和修改，上述结构仅供参考。
 ====
 
 Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参考下边的 *pom.xml*：
@@ -88,7 +89,7 @@ Zero Framework中的所有根项目都是从 *vertx-import* 中导入的，参�
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|authority/|「zero-rbac」权限管理中 *授权管理* 配置目录。
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|atom/<name>/reference/|「zero-atom」动态建模管理模型通道引用配置目录。
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|atom/<name>/rule/|「zero-atom」动态建模标识规则配置目录。
-|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|atom/<name>/schema/|「zero-atom」动态建模数据源Excel文件配置目录（Json格式依靠生成，放在哪个目录都无所谓）。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|atom/<name>/meta/|「zero-atom」动态建模数据源Excel文件配置目录。
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/cn/|「zero-ambient」此处cn是平台运行语言（后端LANGUAGE字段，前端Z_LANGUAGE环境变量），cab目录和 link:http://www.vertxui.cn[Zero UI] 中的资源目录cab实现无缝映射（前后端统一路径）——通常该处加载路径配置在 X_MODULE 表结构中。
 |image:i-folder.png[,20] / image:i-json.svg[,20] 目录|cab/directory/|「zero-ambient/zero-is」文档管理模块专用目录结构树数据源配置。
 |image:i-folder.png[,20] / image:i-yaml.svg[,20] 目录|codex/|「标准框架」后端验证器（Bean Validation）专用配置目录，增强型数据模型验证专用。
@@ -255,6 +256,7 @@ aj jmod -p src/main/resources/plugin/hotel/oob
 1. 全项目编译，运行根项目中的 *build.sh/build.bat* 脚本。
 2. 基础设施准备：此准备过程参考环境搭建章节，主要是为项目初始化 *数据库、云环境、第三方集成等*，推荐使用 Terraform 模式。
 3. 配置数据准备：这是新版最大改动，直接运行启动器下的 *run-ansible.sh/run-ansible.bat* 脚本执行一键配置。
+4. Inst开发专用：根目录中 *run-dev.sh* 脚本主要用与帮助开发人员调试自动化部署工具，开发 *指令集* 专用。
 
 先看启动器项目的目录结构：
 
@@ -264,6 +266,10 @@ aj jmod -p src/main/resources/plugin/hotel/oob
 |image:i-folder.png[,20] 目录|app@history/|历史配置、测试配置、验证配置目录，无实际使用价值，可理解成回收站。
 |image:i-folder.png[,20] 目录|app@jar/|从指令集中单独编译出来的可执行小工具，小工具通常在开发或生产中使用。
 |image:i-folder.png[,20] 目录|app@runtime/|自动化运行时：包括自动化配置（开发环境）、自动化部署（生产环境）。
+|image:i-folder.png[,20] 目录|app@runtime/@atom/|动态建模专用工作目录。
+|image:i-folder.png[,20] / image:i-msexcel.png[,20] 目录|app@runtime/@atom/meta|模型专用定义文件，文件名： <identifier>.xlsx 格式。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|app@runtime/@atom/model|（系统自动生成）对应 M_MODEL 表的模型元数据。
+|image:i-folder.png[,20] / image:i-json.svg[,20] 目录|app@runtime/@atom/schema|（系统自动生成）对应 M_ENTITY 表的实体元数据（ *表模型* )。
 |image:i-folder.png[,20] 目录|app@runtime/@source/|自动化运行组件共享数据目录。
 |image:i-folder.png[,20] / image:i-key.png[,20] 目录|keys/|证书目录。
 |image:i-folder.png[,20] / image:i-key.png[,20] 目录|keys/ipc/|微服务通信证书目录。
@@ -507,10 +513,12 @@ _run.env.sh_
 #      检查远程环境中的 ~/.bashrc 中是否已包含了 mvn / java / mysql 三个命令的基础环境变量
 # - 4) 默认数据库账号使用 zero，此处 DB_PASSWORD 对应的是 zero 的密码
 # - 5) 默认 DB_ENV = DEV（开发测试环境）
+# - 6) DB_ATOM开启动态建模部分
 # TIDB / MYSQL
 export DB_TYPE=MYSQL
 export DB_PASSWORD=
 export DB_ENV=DEV
+export DB_ATOM=
 ----
 
 [TIP]
