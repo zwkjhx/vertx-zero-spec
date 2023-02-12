@@ -514,15 +514,19 @@ _run.env.sh_
 # - 4) 默认数据库账号使用 zero，此处 DB_PASSWORD 对应的是 zero 的密码
 # - 5) 默认 DB_ENV = DEV（开发测试环境）
 # - 6) DB_ATOM开启动态建模部分
+# - 7）Z_HED_ENABLED是否打开加密模块（默认关闭）
 # TIDB / MYSQL
 export DB_TYPE=MYSQL
 export DB_PASSWORD=
 export DB_ENV=DEV
 export DB_ATOM=
+export Z_HED_ENABLED=
 ----
 
-[TIP]
+[CAUTION]
 ====
-此处设置的 DB_PASSWORD 不是 *root* 账号，而是系统默认的 *zero* 账号，您可以在第二章节中查看详细细节。
+1. 此处设置的 DB_PASSWORD 不是 *root* 账号，而是系统默认的 *zero* 账号，您可以在第二章节中查看详细细节。
+2. DB_ATOM主要控制动态建模（*步骤六*），开启 zero-atom 动态建模流程，默认不开启。
+3. Z_HED_ENABLED控制系统中的数据库密码是否启用HED模块执行密码加密，若启用则密码必须以密文形式存放在配置文件中（否则使用明文，默认模式）。
 ====
 

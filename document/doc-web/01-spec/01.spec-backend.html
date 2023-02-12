@@ -1819,22 +1819,34 @@ Z_API_PORT=7085
 # - 4) 默认数据库账号使用 zero，此处 DB_PASSWORD 对应的是 zero 的密码
 # - 5) 默认 DB_ENV = DEV（开发测试环境）
 # - 6) DB_ATOM开启动态建模部分
+# - 7）Z_HED_ENABLED是否打开加密模块（默认关闭）
 # TIDB / MYSQL
 export DB_TYPE=MYSQL
 export DB_PASSWORD=
 export DB_ENV=DEV
-export DB_ATOM=</code></pre>
+export DB_ATOM=
+export Z_HED_ENABLED=</code></pre>
 </div>
 </div>
-<div class="admonitionblock tip">
+<div class="admonitionblock caution">
 <table>
 <tr>
 <td class="icon">
-<i class="fa icon-tip" title="Tip"></i>
+<i class="fa icon-caution" title="Caution"></i>
 </td>
 <td class="content">
-<div class="paragraph">
+<div class="olist arabic">
+<ol class="arabic">
+<li>
 <p>此处设置的 DB_PASSWORD 不是 <strong>root</strong> 账号，而是系统默认的 <strong>zero</strong> 账号，您可以在第二章节中查看详细细节。</p>
+</li>
+<li>
+<p>DB_ATOM主要控制动态建模（<strong>步骤六</strong>），开启 zero-atom 动态建模流程，默认不开启。</p>
+</li>
+<li>
+<p>Z_HED_ENABLED控制系统中的数据库密码是否启用HED模块执行密码加密，若启用则密码必须以密文形式存放在配置文件中（否则使用明文，默认模式）。</p>
+</li>
+</ol>
 </div>
 </td>
 </tr>
@@ -1846,7 +1858,7 @@ export DB_ATOM=</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-12 08:15:48 +0800
+Last updated 2023-02-12 09:48:36 +0800
 </div>
 </div>
 </body>
