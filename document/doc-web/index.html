@@ -525,6 +525,12 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <li><a href="#_1_5_1_环境变量">1.5.1.环境变量</a></li>
 <li><a href="#_1_5_2_全局风格style">1.5.2.全局风格（style）</a></li>
 <li><a href="#_1_5_3_组件风格">1.5.3.组件风格</a></li>
+<li><a href="#_1_5_4_样式详情">1.5.4.样式详情</a>
+<ul class="sectlevel4">
+<li><a href="#_1_5_4_1_全局部分">1.5.4.1.全局部分</a></li>
+<li><a href="#_1_5_4_1_组件部分">1.5.4.1.组件部分</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -3175,6 +3181,11 @@ Z_CSS_FONT=14                       # 字号大小</code></pre>
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全局组件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">整合原始 web- 和 ux- 构造的新规划的全局样式。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">标准组件</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">标准自定义组件专用前缀名。</p></td>
@@ -3221,6 +3232,136 @@ Z_CSS_FONT=14                       # 字号大小</code></pre>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="sect3">
+<h4 id="_1_5_4_样式详情">1.5.4.样式详情</h4>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>函数部分参考源代码查看 <strong>参数</strong> 相关信息，此处就不一一列举，新版由于在变量中会调用，所以将原始的中划线 <code class="source">-</code> 统一修改成下划线实现变量调用；<strong>组件部分</strong> 带有 <code class="underline">下划线</code> 的为引用全局样式的类名。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_1_5_4_1_全局部分">1.5.4.1.全局部分</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">名称</th>
+<th class="tableblock halign-left valign-top">类型</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attr_gradient_l</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">水平渐变从左往右。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attr_gradient_r</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">水平渐变从右往左。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">attr_height_title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">标题高度设置（表单内可用）。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unit_ant_btn_primary_100</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">.ant-btn-primary的Ant样式修订，构造100%宽度的圆角大按钮。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_card_page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Card组件专用，缩小边距的卡片样式设置。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_form_error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Zero UI特定的表单错误信息样式（浮游动画错误提示）。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_form_login</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">登录表单专用样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_form_main</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">主表单专用样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_title</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 ux-title ux-title-pure 的组合样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_card</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 web-card。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_form</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 web-form。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect4">
+<h5 id="_1_5_4_1_组件部分">1.5.4.1.组件部分</h5>
+<table class="tableblock frame-all grid-all stretch">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">组件名称</th>
+<th class="tableblock halign-left valign-top">专用样式</th>
+<th class="tableblock halign-left valign-top">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LoadingContent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_LoadingContent</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">页面加载专用。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">LoadingAlert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_LoadingAlert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">不同提示框，Alert组件不同形态。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PageCard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="underline">ux_card</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卡片样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ExForm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="underline">ux_form</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">表单样式。</p></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 </div>
 </div>

@@ -75,6 +75,7 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 [options="header"]
 |====
 |前缀|类型|说明
+|ux_|全局组件|整合原始 web- 和 ux- 构造的新规划的全局样式。
 |uca_|标准组件|标准自定义组件专用前缀名。
 |uex_|扩展组件|*Ex* 前缀型组件（Extension）
 |utx_|扩展组件|*Tx* 前缀型工作流专用组件（Task Of Workflow）。
@@ -84,4 +85,40 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |uix_|扩展组件|*Ix* （不对外）前缀型内置组件（Internal Component）。
 |uqx_|扩展组件|*Qx* 前缀型查询引擎组件（Query Engine Qr）。
 |uhx_|扩展组件|*Hx* 前缀型高阶配置组件（High Order of Configuration）。
+|====
+
+==== 1.5.4.样式详情
+
+[TIP]
+====
+函数部分参考源代码查看 *参数* 相关信息，此处就不一一列举，新版由于在变量中会调用，所以将原始的中划线 [source,shell]`-` 统一修改成下划线实现变量调用；*组件部分* 带有 [underline]`下划线` 的为引用全局样式的类名。
+====
+
+===== 1.5.4.1.全局部分
+
+[options="header"]
+|====
+|名称|类型|说明
+|attr_gradient_l|函数|水平渐变从左往右。
+|attr_gradient_r|函数|水平渐变从右往左。
+|attr_height_title|函数|标题高度设置（表单内可用）。
+|unit_ant_btn_primary_100|函数|.ant-btn-primary的Ant样式修订，构造100%宽度的圆角大按钮。
+|uca_card_page|函数|Card组件专用，缩小边距的卡片样式设置。
+|uca_form_error|函数|Zero UI特定的表单错误信息样式（浮游动画错误提示）。
+|uca_form_login|函数|登录表单专用样式。
+|uca_form_main|函数|主表单专用样式。
+|ux_title|类名|对应旧版 ux-title ux-title-pure 的组合样式。
+|ux_card|类名|对应旧版 web-card。
+|ux_form|类名|对应旧版 web-form。
+|====
+
+===== 1.5.4.1.组件部分
+
+[options="header"]
+|====
+|组件名称|专用样式|说明
+|LoadingContent|uca_LoadingContent|页面加载专用。
+|LoadingAlert|uca_LoadingAlert|不同提示框，Alert组件不同形态。
+|PageCard| [underline]`ux_card` |卡片样式。
+|ExForm| [underline]`ux_form` |表单样式。
 |====
