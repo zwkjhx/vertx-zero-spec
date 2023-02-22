@@ -102,8 +102,11 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |attr_gradient_l|函数|水平渐变从左往右。
 |attr_gradient_r|函数|水平渐变从右往左。
 |attr_height_title|函数|标题高度设置（表单内可用）。
+|attr_shadow_box|函数|阴影处理。
 |unit_ant_btn_primary_100|函数|.ant-btn-primary的Ant样式修订，构造100%宽度的圆角大按钮。
+|unit_empty|函数|修订<Empty/>组件样式。
 |uca_card_page|函数|Card组件专用，缩小边距的卡片样式设置。
+|uca_dash_app|函数|MyMenu中调用，专用于App入口样式设置。
 |uca_dialog|函数|Dialog组件专用（内置Modal），原版的web-dialog变种，主要设置弹窗风格和区域。
 |uca_form_error|函数|Zero UI特定的表单错误信息样式（浮游动画错误提示）。
 |uca_form_login|函数|登录表单专用样式。
@@ -145,6 +148,10 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |LoadingAlert|uca_LoadingAlert|不同提示框，Alert组件不同形态。
 |TreeSelector|uca_TreeSelector_Dialog|树型选择器中的弹窗专用样式。
 |PageCard| [underline]`ux_card` |卡片样式。
+|ExAnnounce|uex_ExAnnounce|公告呈现组件（首页调用）。
 |ExForm| [underline]`ux_form` |表单样式。
 |ExTab| [underline]`ux_tab` |页签样式。
+|MyMenu|umy_MyMenu|应用组件（首页调用）。
+|MyTodo|umy_MyTodo|待办组件（首页调用）。
+|TxPortal|utx_TxPortal|服务目录组件（首页调用）。
 |====
