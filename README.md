@@ -1,6 +1,6 @@
 # Zero Aeon Cloud 专用数据规范
 
-指引：[《Zero云平台白皮书》](./document/doc-web/index.html)
+详细教程：[《Zero云平台白皮书》](./document/doc-web/index.html)
 
 # 1. 基本介绍
 
