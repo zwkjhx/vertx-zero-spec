@@ -514,7 +514,7 @@ Z_HED_ENABLED=true
 |Z_SIGMA|统一标识符
 |Z_LANGE|当前系统使用的语言信息（默认cn）
 |Z_CROS_DOMAIN|（协同）开发过程指定当前应用前端跨域允许地址。
-|Z_HED_ENABLE|HED加密模块设置，默认关闭，开启之后所有配置节点中的密码需使用密文。
+|Z_HED_ENABLED|HED加密模块设置，默认关闭，开启之后所有配置节点中的密码需使用密文。
 |Z_API_HOST|「RESTful」后端指定Web服务器绑定IP地址，默认 0.0.0.0，无限制。
 |Z_API_PORT|「RESTful」开发协同、后端指定Web服务器端口。
 |Z_SOCK_HOST|「WebSocket」后端指定Sock服务器绑定IP地址，默认 0.0.0.0，无限制。

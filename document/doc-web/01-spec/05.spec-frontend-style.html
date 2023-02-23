@@ -455,8 +455,10 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="content">
 <pre class="highlight"><code class="language-properties" data-lang="properties">Z_CSS_SKIN_MODULE=HM                # 使用的皮肤模块名
 Z_CSS_SKIN_NAME=NormLight           # 深色风格 / 浅色风格
+Z_CSS_SKIN_TOOL=true                # 支持动态样式调整（带有样式工具栏）
 Z_CSS_COLOR=#36648b                 # 系统默认主色调
-Z_CSS_FONT=14                       # 字号大小</code></pre>
+Z_CSS_FONT=14                       # 字号大小
+Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组件的圆角设置</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -467,9 +469,27 @@ Z_CSS_FONT=14                       # 字号大小</code></pre>
 <pre class="highlight"><code class="language-js" data-lang="js">    preOptions.additionalData = `
         $font_boot: ${process.env.Z_CSS_FONT}px;
         $color_boot: ${process.env.Z_CSS_COLOR};
+        $radius_boot: ${process.env.CSS_RADIUS}px;
     `
-    // 您的SCSS中可直接使用变量 $font_boot 和 $color_boot。</code></pre>
+    // 您的SCSS中可直接使用变量
+    // - $font_boot         全局字体大小
+    // - $color_boot        全局默认色彩
+    // - $radius_boot       全局默认边框圆角幅度（支持2,4,6,8）</code></pre>
 </div>
+</div>
+<div class="admonitionblock important">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-important" title="Important"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>不论是在生产环境还是开发环境，上述三个核心环境变量（ <strong>Z_CSS_FONT、Z_CSS_RADIUS、Z_CSS_COLOR</strong> ）是必须的，否则会导致SCSS注入失败引起启动问题。</p>
+</div>
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>WebPack中关于样式的路径和模块定义、使用流程如下：</p>
@@ -928,7 +948,7 @@ Z_CSS_FONT=14                       # 字号大小</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-22 18:50:07 +0800
+Last updated 2023-02-23 07:37:03 +0800
 </div>
 </div>
 </body>
