@@ -1805,7 +1805,9 @@ Z_API_PORT=7085
 # Z_DBH_INSTANCE=DB_HOTEL_HIS
 
 # ----------------------- HED 模块（必须）
-Z_HED_ENABLED=true</code></pre>
+Z_HED_ENABLED=true
+# ----------------------- 集成服务 System Integration Service
+Z_SIS_STORE=/Users/lang/zero-cloud/runtime/store</code></pre>
 </div>
 </div>
 <table class="tableblock frame-all grid-all stretch">
@@ -1847,10 +1849,6 @@ Z_HED_ENABLED=true</code></pre>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Z_CROS_DOMAIN</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">（协同）开发过程指定当前应用前端跨域允许地址。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Z_HED_ENABLED</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">HED加密模块设置，默认关闭，开启之后所有配置节点中的密码需使用密文。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Z_API_HOST</p></td>
@@ -1901,8 +1899,12 @@ Z_HED_ENABLED=true</code></pre>
 <td class="tableblock halign-left valign-top"><p class="tableblock">「历史」开发协同、数据库端口号。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Z_DBH_INSTANCE</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">「历史」数据库实例名。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_HED_ENABLED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">HED加密模块设置，默认关闭，开启之后所有配置节点中的密码需使用密文。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Z_SIS_STORE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">启用集成服务时所需的存储远程文件的路径名（环境变量优先于配置）。</p></td>
 </tr>
 </tbody>
 </table>
@@ -1996,7 +1998,7 @@ export Z_HED_ENABLED=</code></pre>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-23 07:23:40 +0800
+Last updated 2023-02-23 18:23:39 +0800
 </div>
 </div>
 </body>

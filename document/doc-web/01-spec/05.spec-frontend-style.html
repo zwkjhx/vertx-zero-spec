@@ -623,6 +623,11 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">整合原始 web- 和 ux- 构造的新规划的全局样式。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upg_</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全局组件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">原 /extension/components 文件夹下所有扩展页面样式信息。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">标准组件</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">标准自定义组件专用前缀名。</p></td>
@@ -733,6 +738,11 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">修订&lt;Empty/&gt;组件样式。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unit_date_picker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">针对时间日期选择器的背景色消除（去掉灰色）。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_card_page</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Card组件专用，缩小边距的卡片样式设置。</p></td>
@@ -837,6 +847,11 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 web-card。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_card</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 web-card-form。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_form</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 web-form。</p></td>
@@ -867,15 +882,30 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 web-tab-title。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_date_picker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">对应原版的 ux-select-readonly。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_select</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">对应原版的 ux-select。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_table</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">列表中表格专用样式，对应旧版 web-table。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_bag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">对应原版模块化专用处理。</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_1_5_4_1_组件部分">1.5.4.1.组件部分</h5>
+<h5 id="_1_5_4_3_组件部分">1.5.4.3.组件部分</h5>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
 <col style="width: 33.3333%;">
@@ -901,44 +931,64 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">不同提示框，Alert组件不同形态。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">BraftEditor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_BraftEditor / uca_BraftViewer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">富文本编辑器专用。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FileLogo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_FileLogo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">上传图表专用组件。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FileBatch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_FileBatch</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">批量文件上传专用组件。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">InputCaptcha</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_InputCaptcha</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">验证码输入框。</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TreeSelector</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_TreeSelector_Dialog</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">树型选择器中的弹窗专用样式。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">树型选择器中的弹窗专用样式。</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">PageCard</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code class="underline">ux_card</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">卡片样式。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">卡片样式。</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ExAnnounce</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExAnnounce</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">公告呈现组件（首页调用）。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">公告呈现组件（首页调用）。</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ExForm</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code class="underline">ux_form</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">表单样式。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">表单样式。</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ExTab</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code class="underline">ux_tab</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">页签样式。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">页签样式。</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MyMenu</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">umy_MyMenu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">应用组件（首页调用）。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">应用组件（首页调用）。</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MyTodo</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">umy_MyTodo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">待办组件（首页调用）。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">待办组件（首页调用）。</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">TxPortal</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">utx_TxPortal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">服务目录组件（首页调用）。</p></td>
 </tr>
 </tbody>
 </table>
@@ -948,7 +998,7 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-02-23 07:37:03 +0800
+Last updated 2023-02-23 18:22:22 +0800
 </div>
 </div>
 </body>
