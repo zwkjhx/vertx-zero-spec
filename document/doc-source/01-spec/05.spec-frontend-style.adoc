@@ -122,6 +122,7 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |uca_card_page|函数|Card组件专用，缩小边距的卡片样式设置。
 |uca_dash_app|函数|MyMenu中调用，专用于App入口样式设置。
 |uca_dialog|函数|Dialog组件专用（内置Modal），原版的web-dialog变种，主要设置弹窗风格和区域。
+|uca_dialog_screen|函数|带有自适应布局的Dialog组件专用样式。
 |uca_form_error|函数|Zero UI特定的表单错误信息样式（浮游动画错误提示）。
 |uca_form_login|函数|登录表单专用样式。
 |uca_form_main|函数|主表单专用样式。
@@ -136,6 +137,7 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |名称|类型|说明
 |ux_op_search|类名|全局搜索框专用样式。
 |ux_op_ul|类名|全局横向链接菜单专用样式。
+|ux_op_transfer|类名|针对Transfer穿梭框的专用样式（拉满整行）。
 |ux_addon_after|类名|输入框附加按钮专用样式。
 |ux_addon_disabled|类名|输入框禁用按钮专用样式。
 |ux_block|类名|左右侧页签标题专用样式，对应旧版 ex-blocks。
@@ -165,14 +167,18 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |LoadingContent|uca_LoadingContent|页面加载专用。
 |LoadingAlert|uca_LoadingAlert|不同提示框，Alert组件不同形态。
 |BraftEditor|uca_BraftEditor / uca_BraftViewer|富文本编辑器专用。
+|CheckTransfer|uca_CheckTransfer|穿梭框组件专用样式。
 |FileLogo|uca_FileLogo|上传图表专用组件。
 |FileBatch|uca_FileBatch|批量文件上传专用组件。|
 |InputCaptcha|uca_InputCaptcha|验证码输入框。
 |TreeSelector|uca_TreeSelector_Dialog|树型选择器中的弹窗专用样式。
 |PageCard| [underline]`ux_card` |卡片样式。
+|ExDialog|uex_Dialog / uex_Dialog_Modal|容器 - 模态窗样式。
 |ExAnnounce|uex_ExAnnounce|公告呈现组件（首页调用）。
 |ExForm| [underline]`ux_form` |表单样式。
 |ExTab| [underline]`ux_tab` |页签样式。
+|ExEditorExport|uex_ExEditorExport|导出组件。
+|ExEditorImport|uex_ExEditorImport|导入组件。
 |MyMenu|umy_MyMenu|应用组件（首页调用）。
 |MyTodo|umy_MyTodo|待办组件（首页调用）。
 |TxPortal|utx_TxPortal|服务目录组件（首页调用）。
