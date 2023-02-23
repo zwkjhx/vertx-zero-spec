@@ -123,6 +123,7 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |uca_dash_app|函数|MyMenu中调用，专用于App入口样式设置。
 |uca_dialog|函数|Dialog组件专用（内置Modal），原版的web-dialog变种，主要设置弹窗风格和区域。
 |uca_dialog_screen|函数|带有自适应布局的Dialog组件专用样式。
+|uca_drawer|函数|Drawer组件专用，原版窗口变种，主要设置抽屉风格和区域。
 |uca_form_error|函数|Zero UI特定的表单错误信息样式（浮游动画错误提示）。
 |uca_form_login|函数|登录表单专用样式。
 |uca_form_main|函数|主表单专用样式。
@@ -157,6 +158,7 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |ux_select|类名|对应原版的 ux-select。
 |ux_table|类名|列表中表格专用样式，对应旧版 web-table。
 |ux_bag|类名|对应原版模块化专用处理。
+|ux_view_my|类名|对应原版 ux-view-my，个人视图风格。
 |====
 
 ===== 1.5.4.3.组件部分
@@ -173,13 +175,21 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |InputCaptcha|uca_InputCaptcha|验证码输入框。
 |TreeSelector|uca_TreeSelector_Dialog|树型选择器中的弹窗专用样式。
 |PageCard| [underline]`ux_card` |卡片样式。
-|ExDialog|uex_Dialog / uex_Dialog_Modal|容器 - 模态窗样式。
+|ExDialog|uex_Dialog|---
+||uex_Dialog_Modal|容器 - 模态窗样式。
+||uex_Dialog_Drawer|容器 - 抽屉样式。
 |ExAnnounce|uex_ExAnnounce|公告呈现组件（首页调用）。
 |ExForm| [underline]`ux_form` |表单样式。
 |ExTab| [underline]`ux_tab` |页签样式。
+|ExEditorView|uex_ExEditorView|视图管理组件。
 |ExEditorExport|uex_ExEditorExport|导出组件。
 |ExEditorImport|uex_ExEditorImport|导入组件。
+|ExSearch|uex_ExSearch|搜索组件。
+||uex_ExSearch_Drawer|高级搜索抽屉样式。
+|ExView|uex_ExView|视图查看专用样式。
 |MyMenu|umy_MyMenu|应用组件（首页调用）。
 |MyTodo|umy_MyTodo|待办组件（首页调用）。
+|QxCriteria|uqx_QxCriteria|查询条件管理器专用样式。
+|QxProjection|[underline]`ux_op_transfer`|列过滤处理专用样式。
 |TxPortal|utx_TxPortal|服务目录组件（首页调用）。
 |====
