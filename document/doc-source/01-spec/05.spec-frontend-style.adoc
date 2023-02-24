@@ -120,17 +120,22 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |unit_empty|函数|修订<Empty/>组件样式。
 |unit_date_picker|函数|针对时间日期选择器的背景色消除（去掉灰色）。
 |unit_selector_bg|函数|Selector选择器背景色消除（去掉灰色）。
+|unit_selector_input|函数|Selector内部背景色消除。
 |unit_tree_selected|函数|树型菜单选中样式。
 |uca_card_page|函数|Card组件专用，缩小边距的卡片样式设置。
 |uca_dash_app|函数|MyMenu中调用，专用于App入口样式设置。
 |uca_dialog|函数|Dialog组件专用（内置Modal），原版的web-dialog变种，主要设置弹窗风格和区域。
-|uca_dialog_screen|函数|带有自适应布局的Dialog组件专用样式。
 |uca_drawer|函数|Drawer组件专用，原版窗口变种，主要设置抽屉风格和区域。
+|uca_popover|函数|Popover组件专用样式。
+|uca_popover_content|函数|Popover组件内容专用样式。
 |uca_form_error|函数|Zero UI特定的表单错误信息样式（浮游动画错误提示）。
 |uca_form_login|函数|登录表单专用样式。
 |uca_form_main|函数|主表单专用样式。
 |uca_form_readonly|函数|Form表单中字段只读样式。
 |uca_table_head|函数|列表头部专用函数，设置深色和浅色风格。
+|screen_uca_dialog|函数|带有自适应布局的Dialog组件专用样式。
+|screen_uca_popover|函数|带有自适应布局的Popover组件专用样式。
+|screen_uca_popover_content|函数|带有自适应布局的Popover内容组件专用样式。
 |====
 
 
@@ -163,6 +168,8 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |ux_table|类名|列表中表格专用样式，对应旧版 web-table。
 |ux_bag|类名|对应原版模块化专用处理。
 |ux_view_my|类名|对应原版 ux-view-my，个人视图风格。
+|ux_popover_body|类名|（连接）父子优先级调整专用样式，针对内容。
+|ux_popover_footer|类名|（连接）父子优先级调整专用样式，针对页脚。
 |====
 
 ===== 1.5.4.3.组件部分
@@ -190,6 +197,7 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |ExEditorView|uex_ExEditorView|视图管理组件。
 |ExEditorExport|uex_ExEditorExport|导出组件。
 |ExEditorImport|uex_ExEditorImport|导入组件。
+|ExEditorColumn|uex_ExEditorColumn|导入组件。
 |ExSearch|uex_ExSearch|搜索组件。
 ||uex_ExSearch_Drawer|高级搜索抽屉样式。
 |ExView|uex_ExView|视图查看专用样式。

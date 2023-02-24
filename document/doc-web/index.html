@@ -3513,6 +3513,11 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">Selector选择器背景色消除（去掉灰色）。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unit_selector_input</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Selector内部背景色消除。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">unit_tree_selected</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">树型菜单选中样式。</p></td>
@@ -3533,14 +3538,19 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">Dialog组件专用（内置Modal），原版的web-dialog变种，主要设置弹窗风格和区域。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_dialog_screen</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">带有自适应布局的Dialog组件专用样式。</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_drawer</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Drawer组件专用，原版窗口变种，主要设置抽屉风格和区域。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_popover</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Popover组件专用样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_popover_content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Popover组件内容专用样式。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_form_error</p></td>
@@ -3566,6 +3576,21 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_table_head</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">列表头部专用函数，设置深色和浅色风格。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">screen_uca_dialog</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">带有自适应布局的Dialog组件专用样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">screen_uca_popover</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">带有自适应布局的Popover组件专用样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">screen_uca_popover_content</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">带有自适应布局的Popover内容组件专用样式。</p></td>
 </tr>
 </tbody>
 </table>
@@ -3706,6 +3731,16 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">对应原版 ux-view-my，个人视图风格。</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_popover_body</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（连接）父子优先级调整专用样式，针对内容。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_popover_footer</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（连接）父子优先级调整专用样式，针对页脚。</p></td>
+</tr>
 </tbody>
 </table>
 </div>
@@ -3824,6 +3859,11 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">导出组件。</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ExEditorImport</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExEditorImport</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">导入组件。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ExEditorColumn</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExEditorColumn</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">导入组件。</p></td>
