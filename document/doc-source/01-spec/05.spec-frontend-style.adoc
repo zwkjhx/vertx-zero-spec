@@ -182,13 +182,13 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |BraftEditor|uca_BraftEditor / uca_BraftViewer|富文本编辑器专用。
 |CheckTransfer|uca_CheckTransfer|穿梭框组件专用样式。
 |FileLogo|uca_FileLogo|上传图表专用组件。
-|FileBatch|uca_FileBatch|批量文件上传专用组件。|
+|FileBatch|uca_FileBatch|批量文件上传专用组件。
 |InputCaptcha|uca_InputCaptcha|验证码输入框。
 |TreeSelector|uca_TreeSelector / uca_TreeSelector_Dialog|树型选择器中的弹窗专用样式。
 |UserSelector|uca_UserSelector / uca_UserSelector_Dialog|用户选择器。
 |ListSelector|uca_ListSelector / uca_ListSelector_Dialog|列表选择器。
 |PageCard| [underline]`ux_card` |卡片样式。
-|ExDialog|uex_Dialog|---
+|ExDialog|uex_Dialog|--
 ||uex_Dialog_Modal|容器 - 模态窗样式。
 ||uex_Dialog_Drawer|容器 - 抽屉样式。
 |ExAnnounce|uex_ExAnnounce|公告呈现组件（首页调用）。
