@@ -530,7 +530,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <ul class="sectlevel4">
 <li><a href="#_1_5_4_1_全局函数">1.5.4.1.全局函数</a></li>
 <li><a href="#_1_5_4_2_全局类">1.5.4.2.全局类</a></li>
-<li><a href="#_1_5_4_3_组件部分">1.5.4.3.组件部分</a></li>
+<li><a href="#_1_5_4_3_样式设计原则">1.5.4.3.样式设计原则</a></li>
 </ul>
 </li>
 </ul>
@@ -3221,6 +3221,7 @@ cp .env.development.tpl .env.development</code></pre>
 <pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">Z_CSS_SKIN_MODULE=HM                # 使用的皮肤模块名
 Z_CSS_SKIN_NAME=NormLight           # 深色风格 / 浅色风格
 Z_CSS_SKIN_TOOL=true                # 支持动态样式调整（带有样式工具栏）
+Z_CSS_SHADOW=false                  # 窗口是否带阴影效果
 Z_CSS_COLOR=#36648b                 # 系统默认主色调
 Z_CSS_FONT=14                       # 字号大小
 Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组件的圆角设置</code></pre>
@@ -3231,15 +3232,18 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">    preOptions.additionalData = `
-        $font_boot: ${process.env.Z_CSS_FONT}px;
-        $color_boot: ${process.env.Z_CSS_COLOR};
-        $radius_boot: ${process.env.CSS_RADIUS}px;
-    `
-    // 您的SCSS中可直接使用变量
-    // - $font_boot         全局字体大小
-    // - $color_boot        全局默认色彩
-    // - $radius_boot       全局默认边框圆角幅度（支持2,4,6,8）</code></pre>
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">    /*
+     * $uni_font    - 默认字体大小
+     * $uni_color   - 默认关键色
+     * $uni_radius  - 默认圆角尺寸（2 / 4 / 6 / 8）
+     * $uni_shadow  - 默认是否开启阴影（true / false）
+     */
+    preOptions.additionalData = `
+        $uni_font: ${process.env.Z_CSS_FONT}px;
+        $uni_color: ${process.env.Z_CSS_COLOR};
+        $uni_radius: ${process.env.Z_CSS_RADIUS}px;
+        $uni_shadow: ${process.env.Z_CSS_SHADOW};
+    `</code></pre>
 </div>
 </div>
 <div class="admonitionblock important">
@@ -3267,7 +3271,8 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 
     // 使用代码
     import Sk from "skin";                                 // 风格API调用
-    import __ from "./Cab.module.scss";                    // 当前模块样式文件模块化导入</code></pre>
+    import __ from "./Cab.module.scss";                    // 动态导入：导入之后无法直接使用className类名引用
+    import "./Cab.norm.scss";                              // 静态导入：导入之后可直接使用</code></pre>
 </div>
 </div>
 </div>
@@ -3346,13 +3351,18 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">style/uca</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">组件样式定义。</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="image"><img src="data:image/png;base64,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" alt="i folder" width="20"></span> / <span class="image"><img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHZpZXdCb3g9IjAgMCAyNTYgMTkyIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHByZXNlcnZlQXNwZWN0UmF0aW89InhNaWRZTWlkIj48cGF0aCBkPSJNMjIwLjI4MSAxMTAuNTE0Yy04LjkwNi4wNDYtMTYuNjQ3IDIuMTkxLTIzLjEyOCA1LjM2Mi0yLjM3OS00LjcxLTQuNzU3LTguOTA2LTUuMTc2LTExLjk4NC0uNDY3LTMuNTktMS4wMjYtNS43ODItLjQ2Ny0xMC4wNzIuNTYtNC4yOSAzLjA3OC0xMC4zOTkgMy4wMzEtMTAuODY1LS4wNDYtLjQ2Ni0uNTYtMi42NTgtNS42ODktMi43MDQtNS4xMjktLjA0Ny05LjU1OS45NzktMTAuMDcyIDIuMzMxLS41MTMgMS4zNTItMS40OTIgNC40My0yLjE0NSA3LjYtLjg4NiA0LjY2NC0xMC4yNTggMjEuMzEtMTUuNjIgMzAuMDMtMS43MjYtMy40MDMtMy4yMTgtNi4zODgtMy41NDUtOC43NjYtLjQ2Ni0zLjU5LTEuMDI2LTUuNzgyLS40NjYtMTAuMDcyLjU2LTQuMjkgMy4wNzgtMTAuMzk4IDMuMDMxLTEwLjg2NS0uMDQ3LS40NjYtLjU2LTIuNjU4LTUuNjg5LTIuNzA0LTUuMTMtLjA0Ny05LjU2Ljk3OS0xMC4wNzIgMi4zMzEtLjUxMyAxLjM1My0xLjA3MyA0LjUyMy0yLjE0NSA3LjYwMS0xLjA3MyAzLjA3OC0xMy41MjMgMzAuODctMTYuNzg3IDM4LjA1YTIxNC43MjYgMjE0LjcyNiAwIDAgMS00LjE1IDguNjI3cy0uMDQ3LjE0LS4xODcuMzczYTExNy43NzMgMTE3Ljc3MyAwIDAgMS0xLjM5OCAyLjY1OHYuMDQ2Yy0uNyAxLjI2LTEuNDQ2IDIuNDI1LTEuODE5IDIuNDI1LS4yOCAwLS43OTMtMy4zNTcuMDkzLTcuOTI3IDEuODY1LTkuNjUyIDYuMjk1LTI0LjY2NyA2LjI0OS0yNS4xOCAwLS4yOC44MzktMi44OTEtMi44OTEtNC4yNDQtMy42MzgtMS4zNTItNC45NDMuODg2LTUuMjcuODg2LS4zMjYgMC0uNTYuNzkzLS41Ni43OTNzNC4wNTgtMTYuODgtNy43NC0xNi44OGMtNy4zNjcgMC0xNy41MzMgOC4wNjctMjIuNTY5IDE1LjM0MWE2MjY5Ljk2IDYyNjkuOTYgMCAwIDAtMTcuMTYgOS4zNzNjLTIuNzUgMS41MzktNS41OTUgMy4wNzgtOC4yNTMgNC41MjMtLjE4Ny0uMTg2LS4zNzMtLjQyLS41Ni0uNjA2LTE0LjI2OS0xNS4yNDgtNDAuNjYxLTI2LjAyLTM5LjU0Mi00Ni40OS40Mi03LjQ2MSAyLjk4NC0yNy4wNDYgNTAuNjg3LTUwLjgyNyAzOS4yNjItMTkuMzUyIDcwLjUwNS0xMy45OSA3NS45MTQtMi4wOTkgNy43NCAxNi45NzQtMTYuNzQgNDguNDk2LTU3LjMwOSA1My4wNjUtMTUuNDgxIDEuNzI2LTIzLjU5NS00LjI0My0yNS42NDYtNi40ODEtMi4xNDUtMi4zMzItMi40NzItMi40NzItMy4yNjUtMi4wMDUtMS4zMDUuNy0uNDY2IDIuNzk4IDAgNC4wMSAxLjIxMyAzLjE3IDYuMjAyIDguNzY2IDE0LjY0MiAxMS41MTggNy40NjEgMi40MjQgMjUuNiAzLjc3NyA0Ny41NjMtNC43MSAyNC41NzQtOS41MTMgNDMuNzg2LTM1Ljk1MiAzOC4xNDQtNTguMTAxLTUuNjQzLTIyLjQ3Ni00Mi45NDctMjkuODktNzguMjQ2LTE3LjM0N0M2MS4wODYgMTMuOTkgMzguMzMgMjUuNzQgMjEuOTYzIDQxLjAzNSAyLjUxOCA1OS4yMi0uNTYgNzUuMDI4LjY5OSA4MS42NWM0LjUyNCAyMy41MDEgMzYuOTMyIDM4Ljc5NiA0OS44OTUgNTAuMTI3LS42NTMuMzczLTEuMjYuNy0xLjc3Mi45OC02LjQ4MiAzLjIxNy0zMS4xOTYgMTYuMTMzLTM3LjM1MSAyOS43OTYtNi45OTQgMTUuNDgxIDEuMTIgMjYuNTggNi40ODIgMjguMDcxIDE2LjY0NyA0LjYxNyAzMy43Ni0zLjY4MyA0Mi45NDYtMTcuMzkzIDkuMTg2LTEzLjcwOSA4LjA2Ny0zMS41MjIgMy44MjQtMzkuNjgyLS4wNDctLjA5My0uMDkzLS4xODctLjE4Ny0uMjggMS42NzktLjk3OSAzLjQwNC0yLjAwNSA1LjA4My0yLjk4NGEyNDcuOTMzIDI0Ny45MzMgMCAwIDEgOS4zNzMtNS4yN2MtMS41ODYgNC4zMzctMi43NTIgOS41MTMtMy4zMTEgMTYuOTc0LS43IDguNzY3IDIuODkgMjAuMTQ0IDcuNiAyNC42MiAyLjA5OSAxLjk2IDQuNTcgMi4wMDYgNi4xNTYgMi4wMDYgNS41MDIgMCA3Ljk3NC00LjU3IDEwLjcyNS05Ljk3OSAzLjM1Ny02LjYyMSA2LjM4OC0xNC4zMTUgNi4zODgtMTQuMzE1cy0zLjc3NyAyMC43OTcgNi40ODIgMjAuNzk3YzMuNzMgMCA3LjUwNy00Ljg1IDkuMTg2LTcuMzIxdi4wNDZzLjA5My0uMTQuMjgtLjQ2NmMuMzczLS42MDYuNjA2LS45OC42MDYtLjk4di0uMDkyYzEuNDkyLTIuNjEyIDQuODUtOC41MzQgOS44MzktMTguMzczIDYuNDM1LTEyLjY4MyAxMi42MzctMjguNTM3IDEyLjYzNy0yOC41MzdzLjU2IDMuODcgMi40NzEgMTAuMzA1YzEuMTIgMy43NzcgMy40NSA3LjkyNyA1LjMxNiAxMS45MzctMS40OTIgMi4wOTktMi40MjUgMy4yNjQtMi40MjUgMy4yNjRsLjA0Ny4wNDdjLTEuMjEzIDEuNTg1LTIuNTE4IDMuMzEtMy45NjQgNC45OS01LjA4MyA2LjA2MS0xMS4xNDQgMTMuMDEtMTEuOTg0IDE1LjAxNC0uOTggMi4zNzgtLjc0NiA0LjEwNCAxLjEyIDUuNTAzIDEuMzUyIDEuMDI2IDMuNzc2IDEuMTY1IDYuMjQ4IDEuMDI2IDQuNTctLjMyNyA3Ljc4Ny0xLjQ0NiA5LjM3Mi0yLjE0NSAyLjQ3Mi0uODg2IDUuMzYzLTIuMjM5IDguMDY3LTQuMjQ0IDQuOTktMy42ODQgOC4wMi04Ljk1MyA3Ljc0MS0xNS45LS4xNC0zLjgyNC0xLjM5OS03LjY0OC0yLjkzOC0xMS4yMzkuNDY3LS42NTIuODg2LTEuMzA1IDEuMzUzLTEuOTU4IDcuODgtMTEuNTE4IDEzLjk4OS0yNC4xNTUgMTMuOTg5LTI0LjE1NXMuNTYgMy44NyAyLjQ3MSAxMC4zMDZjLjkzMyAzLjI2NCAyLjg0NSA2LjgwOCA0LjUyMyAxMC4yNTgtNy40MTQgNi4wMTYtMTEuOTg0IDEzLjAxLTEzLjYxNiAxNy41OC0yLjkzNyA4LjQ4Ny0uNjUzIDEyLjMxIDMuNjg0IDEzLjE5NiAxLjk1OC40MiA0Ljc1Ni0uNTEzIDYuODA4LTEuMzk5IDIuNjExLS44MzkgNS42ODktMi4yODQgOC42MjctNC40MyA0Ljk5LTMuNjgzIDkuNzkyLTguODEzIDkuNTEyLTE1Ljc2LS4xNC0zLjE3MS0uOTc5LTYuMjk2LTIuMTQ1LTkuMzI3IDYuMjk1LTIuNjEgMTQuNDA5LTQuMDU2IDI0Ljc2LTIuODQ0IDIyLjE5NyAyLjYxMSAyNi41OCAxNi40NiAyNS43NCAyMi4yOS0uODM5IDUuODI4LTUuNTAyIDguOTk5LTcuMDQgOS45NzgtMS41NC45OC0yLjA1MiAxLjMwNi0xLjkxMiAyLjAwNS4xODYgMS4wMjYuOTMyLjk4IDIuMjM4Ljc5MyAxLjgxOS0uMzI2IDExLjY1OC00LjcxIDEyLjA3Ny0xNS40MzUuNy0xMy43MDktMTIuMzU3LTI4LjY3Ny0zNS40MzktMjguNTM3ek00OS4wNTUgMTY4LjI0MmMtNy4zNjggOC4wMi0xNy42MjYgMTEuMDUxLTIyLjA1NiA4LjQ4Ny00Ljc1Ni0yLjc1Mi0yLjg5MS0xNC41OTYgNi4xNTUtMjMuMDgyIDUuNTAyLTUuMTc2IDEyLjU5LTkuOTggMTcuMy0xMi45MTcgMS4wNzItLjY1MyAyLjY1OC0xLjU4NSA0LjU3LTIuNzUxLjMyNi0uMTg3LjUxMy0uMjguNTEzLS4yOGwxLjExOS0uN2MzLjMxIDEyLjEyNC4xNCAyMi44MDMtNy42MDEgMzEuMjQzem01My42MjUtMzYuNDY1Yy0yLjU2NSA2LjI0OS03LjkyNyAyMi4yNDMtMTEuMTkxIDIxLjM1Ny0yLjc5OC0uNzQ2LTQuNTI0LTEyLjg3LS41Ni0yNC44NTQgMi4wMDUtNi4wMTYgNi4yNDgtMTMuMTk3IDguNzItMTUuOTk0IDQuMDEtNC40NzcgOC40NC01Ljk3IDkuNTEyLTQuMTUgMS4zNTMgMi4zNzgtNC44OTYgMTkuNzI0LTYuNDgxIDIzLjY0MXptNDQuMjUyIDIxLjE3Yy0xLjA3My41Ni0yLjA5OC45MzMtMi41NjUuNjUzLS4zMjYtLjE4Ny40NjctLjkzMy40NjctLjkzM3M1LjU0OS01Ljk2OCA3Ljc0LTguNjczYzEuMjYtMS41ODUgMi43NTEtMy40NSA0LjMzNy01LjU0OXYuNjA2YzAgNy4xMzUtNi45MDIgMTEuOTM4LTkuOTggMTMuODk2em0zNC4xMzMtNy43ODdjLS43OTMtLjU2LS42NTMtMi40MjUgMi4wMDUtOC4yNTQgMS4wMjYtMi4yODUgMy40NS02LjEwOCA3LjYwMS05Ljc5Mi40NjYgMS40OTIuNzkzIDIuOTM4Ljc0NiA0LjI5LS4wNDcgOS02LjQ4MSAxMi4zNTctMTAuMzUyIDEzLjc1NnoiIGZpbGw9IiNDRDY3OTkiLz48L3N2Zz4=" alt="i sass" width="20"></span> 目录</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">style/ux@legacy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">旧样式替换目录（替换原始的 ux- 和 ex-）。</p></td>
+</tr>
 </tbody>
 </table>
 </div>
 <div class="sect3">
 <h4 id="_1_5_3_组件风格">1.5.3.组件风格</h4>
 <div class="paragraph">
-<p>前端页面和容器位于 components/container 目录中，这种类型的样式名会使用样式包 <strong>skin</strong> 中的API直接提取（CSS Module）。组件类型的根样式则全部采用固定样式名，在代码中以 <code class="source">import "./Cab.norm.scss"</code> 方式导入生效。</p>
+<p>前端页面和容器位于 components/container 目录中，这种类型的样式名会使用样式包 <strong>skin</strong> 中的API直接提取（CSS Module）。标准化组件类型的根样式则全部采用固定样式名，可直接在代码中用className引用，以 <code class="source">import "./Cab.norm.scss"</code> 方式导入生效。</p>
 </div>
 <div class="admonitionblock tip">
 <table>
@@ -3383,14 +3393,24 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">upg_</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全局组件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（特殊）原 /extension/components 文件夹下所有扩展页面样式信息。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uni_</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全局组件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">如果可标准化的组件可直接使用该样式 uni_ 前缀，任何新项目都不用处理。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">urd_</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全局组件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">开发中心专用样式表。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">全局组件</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">整合原始 web- 和 ux- 构造的新规划的全局样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">upg_</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">全局组件</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">原 /extension/components 文件夹下所有扩展页面样式信息。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_</p></td>
@@ -3437,8 +3457,27 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">扩展组件</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Hx</strong> 前缀型高阶配置组件（High Order of Configuration）。</p></td>
 </tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uox_</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">扩展组件</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Ox</strong> 前缀型配置组件，可使用动态建模（Origin Execute）。</p></td>
+</tr>
 </tbody>
 </table>
+<div class="admonitionblock caution">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-caution" title="Caution"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>样式特殊说明，上述样式中，除 <strong>upg_</strong> 样式不可以使用类名的方式引用，其他样式都可以直接使用并且被重写。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 </div>
 <div class="sect3">
 <h4 id="_1_5_4_样式详情">1.5.4.样式详情</h4>
@@ -3498,7 +3537,12 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">.ant-btn-primary的Ant样式修订，构造100%宽度的圆角大按钮。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">unit_empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unit_ant_button</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">专用色彩按钮样式处理。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">unit_ant_empty</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">修订&lt;Empty/&gt;组件样式。</p></td>
 </tr>
@@ -3520,7 +3564,7 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">unit_tree_selected</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">树型菜单选中样式。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">树型菜单中项选中之后样式（深色）。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_card_page</p></td>
@@ -3531,6 +3575,11 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_dash_app</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">MyMenu中调用，专用于App入口样式设置。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_collapse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Collapse组件专用风格。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">uca_dialog</p></td>
@@ -3612,6 +3661,56 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 </thead>
 <tbody>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uc_green</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">色彩按钮：绿色。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uc_green_big</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（大号）色彩按钮：绿色。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uc_red</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">色彩按钮：红色。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uc_pink</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">色彩按钮：粉色。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uc_peach</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">色彩按钮：桃红色。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uc_brown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">色彩按钮：棕色。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_addon_after</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">输入框附加按钮专用样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_addon_disabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">输入框禁用按钮专用样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">错误信息样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_error_purge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">错误清除样式。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_op_search</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">全局搜索框专用样式。</p></td>
@@ -3627,14 +3726,9 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">针对Transfer穿梭框的专用样式（拉满整行）。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ux_addon_after</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_op_dbclick</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">输入框附加按钮专用样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ux_addon_disabled</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">输入框禁用按钮专用样式。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">双击样式，对应原 ex-row-double。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_block</p></td>
@@ -3645,6 +3739,11 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_hidden</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">全局隐藏（display:none）专用样式，对应旧版 ux-hidden。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_disabled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">全局禁用专用样式。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_readonly</p></td>
@@ -3667,12 +3766,22 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 ux-title ux-title-pure 的组合样式。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_icon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">带文字的专用图标样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_view_my</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">我的视图样式。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_card</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 web-card。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ux_card</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_card_form</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">对应旧版 web-card-form。</p></td>
 </tr>
@@ -3727,186 +3836,95 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">对应原版模块化专用处理。</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ux_view_my</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">对应原版 ux-view-my，个人视图风格。</p></td>
-</tr>
-<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_popover_body</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">虚拟类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">（连接）父子优先级调整专用样式，针对内容。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_popover_footer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">虚拟类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">（连接）父子优先级调整专用样式，针对页脚。</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="sect4">
-<h5 id="_1_5_4_3_组件部分">1.5.4.3.组件部分</h5>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 33.3333%;">
-<col style="width: 33.3333%;">
-<col style="width: 33.3334%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top">组件名称</th>
-<th class="tableblock halign-left valign-top">专用样式</th>
-<th class="tableblock halign-left valign-top">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LoadingContent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_LoadingContent</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">页面加载专用。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">LoadingAlert</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_LoadingAlert</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">不同提示框，Alert组件不同形态。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">BraftEditor</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_BraftEditor / uca_BraftViewer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">富文本编辑器专用。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">CheckTransfer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_CheckTransfer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">穿梭框组件专用样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FileLogo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_FileLogo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">上传图表专用组件。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">FileBatch</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_FileBatch</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">批量文件上传专用组件。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">InputCaptcha</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_InputCaptcha</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">验证码输入框。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TreeSelector</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_TreeSelector / uca_TreeSelector_Dialog</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">树型选择器中的弹窗专用样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">UserSelector</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_UserSelector / uca_UserSelector_Dialog</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">用户选择器。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ListSelector</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uca_ListSelector / uca_ListSelector_Dialog</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">列表选择器。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">PageCard</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="underline">ux_card</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">卡片样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExDialog</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_Dialog</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">&#8201;&#8212;&#8201;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_Dialog_Modal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">容器 - 模态窗样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_Dialog_Drawer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">容器 - 抽屉样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExAnnounce</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExAnnounce</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">公告呈现组件（首页调用）。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExForm</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="underline">ux_form</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">表单样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExTab</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="underline">ux_tab</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">页签样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExEditorView</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExEditorView</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">视图管理组件。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExEditorExport</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExEditorExport</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">导出组件。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExEditorImport</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExEditorImport</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">导入组件。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExEditorColumn</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExEditorColumn</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">导入组件。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExSearch</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExSearch</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">搜索组件。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExSearch_Drawer</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">高级搜索抽屉样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">ExView</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uex_ExView</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">视图查看专用样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MyMenu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">umy_MyMenu</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">应用组件（首页调用）。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">MyTodo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">umy_MyTodo</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">待办组件（首页调用）。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QxCriteria</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">uqx_QxCriteria</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">查询条件管理器专用样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">QxProjection</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code class="underline">ux_op_transfer</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">列过滤处理专用样式。</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">TxPortal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">utx_TxPortal</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">服务目录组件（首页调用）。</p></td>
-</tr>
-</tbody>
-</table>
+<h5 id="_1_5_4_3_样式设计原则">1.5.4.3.样式设计原则</h5>
+<div class="paragraph">
+<p>基本设计原则如下：</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>前缀标识可直接针对不同类型的组件进行分类。</p>
+</li>
+<li>
+<p>标准模式中只有 <code class="source">upg_</code> 是 <strong>动态模式</strong>，即不可以使用 className 直接引用。</p>
+</li>
+<li>
+<p>如果是开发应用，需要使用自己的应用前缀如：[source, bash]`xc_, hm_, ox_`等。</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>参考下边代码对比 <strong>静态模式</strong> 和 <strong>动态模式</strong> 的区别：</p>
+</div>
+<div class="paragraph">
+<p><strong>模式一</strong>：动态模式：标准样式中只有 upg_ 样式是这种类型，这种类型不可以直接引用。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-scss hljs" data-lang="scss">// extension/components/integration/document/Cab.module.scss
+.upg {
+  &amp;_integration_document {
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// 使用如：
+import Sk from 'skin';
+import __ from './Cab.module.scss';
+....
+    const attrs = Sk.mix(__.upg_integration_document);
+    // 此处 attrs 已经包含了 className 和 style 属性，且是一个Object
+    // 不可以在 jsx 中使用 className="upg_integration_document"
+    return (
+        &lt;div {...attrs}/&gt;
+    )</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>模式二</strong>：静态模式：标准组件样式全使用此种模式。</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-scss hljs" data-lang="scss">// zion/variant/LoadingContent/Cab.norm.scss
+.uca {
+  &amp;_LoadingContent {
+    width: 100%;
+    text-align: center;
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-js hljs" data-lang="js">// 使用如：
+import './Cab.norm.scss'
+import Sk from 'skin';
+....
+    const attrs = Sk.mixUca("LoadingContent");
+    // 此处 attrs 已经包含了 className 和 style 属性，且是一个Object
+    // 且上述 className 为：uca_LoadingContent
+    // 其他地方可以直接使用 className="uca_LoadingContent" 样式
+        &lt;div {...attrs}/&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>自定义应用：components 和 container 必须使用第一种模式（被Hash的模式）以防止样式污染，标准化组件除开OOB页面以外，其他所有内容都使用模式二统一管理。</p>
+</div>
 </div>
 </div>
 </div>
