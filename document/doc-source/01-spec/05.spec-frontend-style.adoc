@@ -78,6 +78,7 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |image:i-folder.png[,20] / image:i-sass.svg[,20] 目录|style/micrososm|局部可重用样式定义。
 |image:i-folder.png[,20] / image:i-sass.svg[,20] 目录|style/module|模块样式定义。
 |image:i-folder.png[,20] / image:i-sass.svg[,20] 目录|style/uca|组件样式定义。
+|image:i-folder.png[,20] / image:i-sass.svg[,20] 目录|style/unstable|（自适应，screen前缀样式）。
 |image:i-folder.png[,20] / image:i-sass.svg[,20] 目录|style/ux@legacy|旧样式替换目录（替换原始的 ux- 和 ex-）。
 |====
 
