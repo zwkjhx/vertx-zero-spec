@@ -867,6 +867,11 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">列表头部专用函数，设置深色和浅色风格。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">uca_bpmn_node</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">流程图节点专用样式函数，前景色和背景色。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">screen_uca_dialog</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">函数</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">带有自适应布局的Dialog组件专用样式。</p></td>
@@ -955,6 +960,11 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">色彩按钮：棕色。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ud_column_cn${x}</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">此处x为1 ~ 10，分别为x个中文字单元格宽度设置。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_addon_after</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">输入框附加按钮专用样式。</p></td>
@@ -1017,7 +1027,12 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_readonly_select</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Selector只读专用样式，消除背景用。</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Selector可编辑（选择框只读）专用样式，消除背景用。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_readonly_unselect</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Selector只读专用样式。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_extra</p></td>
@@ -1095,9 +1110,54 @@ Z_CSS_RADIUS=4                      # Ant中默认是6，修正成4，基础组�
 <td class="tableblock halign-left valign-top"><p class="tableblock">列表中表格专用样式，对应旧版 web-table。</p></td>
 </tr>
 <tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_table_editor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">表格编辑器专用样式，对应旧版 web-table-editor。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_table_editor_small</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">表格编辑器专用样式（小款），对应旧版 web-table-editor-small。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_table_tree</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">表格中带字母树型结构专用样式。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_table_doc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">文档管理器中的表格专用样式。</p></td>
+</tr>
+<tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_bag</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">对应原版模块化专用处理。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_bpmn_end</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">流程图完成节点。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_bpmn_error</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">流程图异常节点。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_bpmn_active</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">流程图激活节点。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_bpmn_hover</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（管理）鼠标移动到流程图节点。</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">ux_bpmn_selected</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">类名</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">（管理）流程图选中节点。</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">ux_popover_body</p></td>
@@ -1195,7 +1255,7 @@ import Sk from 'skin';
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-06 08:37:49 +0800
+Last updated 2023-03-06 18:23:51 +0800
 </div>
 </div>
 </body>

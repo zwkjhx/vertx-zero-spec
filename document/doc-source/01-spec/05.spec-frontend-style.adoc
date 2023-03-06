@@ -150,6 +150,7 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |uca_form_main|函数|主表单专用样式。
 |uca_form_readonly|函数|Form表单中字段只读样式。
 |uca_table_head|函数|列表头部专用函数，设置深色和浅色风格。
+|uca_bpmn_node|函数|流程图节点专用样式函数，前景色和背景色。
 |screen_uca_dialog|函数|带有自适应布局的Dialog组件专用样式。
 |screen_uca_popover|函数|带有自适应布局的Popover组件专用样式。
 |screen_uca_popover_content|函数|带有自适应布局的Popover内容组件专用样式。
@@ -176,6 +177,7 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |uc_pink|类名|色彩按钮：粉色。
 |uc_peach|类名|色彩按钮：桃红色。
 |uc_brown|类名|色彩按钮：棕色。
+|ud_column_cn${x}|类名|此处x为1 ~ 10，分别为x个中文字单元格宽度设置。
 |ux_addon_after|类名|输入框附加按钮专用样式。
 |ux_addon_disabled|类名|输入框禁用按钮专用样式。
 |ux_error|类名|错误信息样式。
@@ -188,7 +190,8 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |ux_hidden|类名|全局隐藏（display:none）专用样式，对应旧版 ux-hidden。
 |ux_disabled|类名|全局禁用专用样式。
 |ux_readonly|类名|全局只读专用样式，对应旧版 ux-readonly。
-|ux_readonly_select|类名|Selector只读专用样式，消除背景用。
+|ux_readonly_select|类名|Selector可编辑（选择框只读）专用样式，消除背景用。
+|ux_readonly_unselect|类名|Selector只读专用样式。
 |ux_extra|类名|右上角附加操作区域专用样式，对应旧版 web-extra，多用于页签部分。
 |ux_title|类名|对应旧版 ux-title ux-title-pure 的组合样式。
 |ux_icon|类名|带文字的专用图标样式。
@@ -204,7 +207,16 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 |ux_date_picker|类名|对应原版的 ux-select-readonly。
 |ux_select|类名|对应原版的 ux-select。
 |ux_table|类名|列表中表格专用样式，对应旧版 web-table。
+|ux_table_editor|类名|表格编辑器专用样式，对应旧版 web-table-editor。
+|ux_table_editor_small|类名|表格编辑器专用样式（小款），对应旧版 web-table-editor-small。
+|ux_table_tree|类名|表格中带字母树型结构专用样式。
+|ux_table_doc|类名|文档管理器中的表格专用样式。
 |ux_bag|类名|对应原版模块化专用处理。
+|ux_bpmn_end|类名|流程图完成节点。
+|ux_bpmn_error|类名|流程图异常节点。
+|ux_bpmn_active|类名|流程图激活节点。
+|ux_bpmn_hover|类名|（管理）鼠标移动到流程图节点。
+|ux_bpmn_selected|类名|（管理）流程图选中节点。
 |ux_popover_body|虚拟类名|（连接）父子优先级调整专用样式，针对内容。
 |ux_popover_footer|虚拟类名|（连接）父子优先级调整专用样式，针对页脚。
 |====
