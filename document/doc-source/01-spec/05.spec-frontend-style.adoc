@@ -158,6 +158,15 @@ WebPack中关于样式的路径和模块定义、使用流程如下：
 
 ===== 1.5.4.2.全局类
 
+[TIP]
+====
+
+* uc前缀全称：Utility Color，主要负责色彩类className的独立定义。
+* ud前缀全称：Utility Dynamic，主要负责可变化类（带后缀）的相关定义。
+* ux前缀全称：Utility X（对应Zero中的Utility X部分），综合旧版本中的 ux-，ex-，ox-等相关className执行重构。
+
+====
+
 [options="header"]
 |====
 |名称|类型|说明
