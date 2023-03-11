@@ -1,0 +1,4 @@
+ifndef::imagesdir[:imagesdir: ../images]
+:data-uri:
+
+=== 3.2.前端静态配置

@@ -446,7 +446,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div class="details">
 <span id="author" class="author">虞浪</span><br>
 <span id="email" class="email"><a href="mailto:silentbalanceyh@126.com">silentbalanceyh@126.com</a></span><br>
-<span id="revnumber">version v1.02,</span>
+<span id="revnumber">version v1.04,</span>
 <span id="revdate">02.04.2023</span>
 </div>
 <div id="toc" class="toc2">
@@ -571,7 +571,30 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </li>
 </ul>
 </li>
-<li><a href="#_3_原理剖析">3. 原理剖析</a></li>
+<li><a href="#_3_配置实施">3. 配置/实施</a>
+<ul class="sectlevel2">
+<li><a href="#_3_1_基础环境配置">3.1.基础环境配置</a></li>
+<li><a href="#_3_2_前端静态配置">3.2.前端静态配置</a></li>
+<li><a href="#_3_3_前端动态配置zero_ui">3.3.前端动态配置（zero-ui）</a></li>
+<li><a href="#_3_4_前端组件">3.4.前端组件</a></li>
+<li><a href="#_3_5_开发中心插件">3.5.开发中心插件</a></li>
+<li><a href="#_3_6_crud模板zero_crud">3.6.CRUD模板（zero-crud）</a></li>
+<li><a href="#_3_7_acl权限管理zero_rbac">3.7.ACL权限管理（zero-rbac）</a>
+<ul class="sectlevel3">
+<li><a href="#_3_7_1_基础概念">3.7.1.基础概念</a>
+<ul class="sectlevel4">
+<li><a href="#_3_7_1_1_xbac混合模型">3.7.1.1.XBAC混合模型</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#_3_8_动态建模zero_atom">3.8.动态建模（zero-atom）</a></li>
+<li><a href="#_3_8_接口任务配置zero_jet">3.8.接口/任务配置（zero-jet）</a></li>
+<li><a href="#_3_10_工作流配置zero_wf">3.10.工作流配置（zero-wf）</a></li>
+<li><a href="#_3_11_集成服务配置zero_is">3.11.集成服务配置（zero-is）</a></li>
+<li><a href="#_3_12_模块化配置zero_berrery">3.12.模块化配置（zero-berrery）</a></li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -612,6 +635,18 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <td class="tableblock halign-left valign-top"><p class="tableblock">虞浪</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-14</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">前端结构规范</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.03</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">虞浪</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-02-22</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">前端样式规范</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">1.04</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">虞浪</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">2023-03-11</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">数据驱动层</p></td>
 </tr>
 </tbody>
 </table>
@@ -4776,16 +4811,72 @@ To view the Grafana: http://127.0.0.1:3000</code></pre>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_3_原理剖析">3. 原理剖析</h2>
+<h2 id="_3_配置实施">3. 配置/实施</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_3_1_基础环境配置">3.1.基础环境配置</h3>
 
+</div>
+<div class="sect2">
+<h3 id="_3_2_前端静态配置">3.2.前端静态配置</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_3_3_前端动态配置zero_ui">3.3.前端动态配置（zero-ui）</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_3_4_前端组件">3.4.前端组件</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_3_5_开发中心插件">3.5.开发中心插件</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_3_6_crud模板zero_crud">3.6.CRUD模板（zero-crud）</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_3_7_acl权限管理zero_rbac">3.7.ACL权限管理（zero-rbac）</h3>
+<div class="sect3">
+<h4 id="_3_7_1_基础概念">3.7.1.基础概念</h4>
+<div class="paragraph">
+<p>Zero框架权限管理为扩展框架内容，位于项目 <code class="source">zero-rbac</code> 中，提供了复杂的权限模块，本章节主要针对 <strong>权限管理</strong> 功能进行配置说明，开发人员可对权限管理模块执行拓展开发。Zero框架最初权限控制是基于RBAC模块，之后随着几个项目的需求拓展，逐步引入了PBAC模型、ABAC模型、ACL数据域、ACL权限窗口、动态授权、特权定制等完善的权限模型，现阶段已经可以在各个生产系统根据配置拓展现有权限实现权限的完善管理，但由于2021年做过一次权限版本的完整重构，管理工具部分目前仅限：<strong>菜单权限、流程权限</strong> 两个模块（后续补齐，底层配置数据已经完成了所有权限的控制功能）。</p>
+</div>
+<div class="sect4">
+<h5 id="_3_7_1_1_xbac混合模型">3.7.1.1.XBAC混合模型</h5>
+
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_8_动态建模zero_atom">3.8.动态建模（zero-atom）</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_3_8_接口任务配置zero_jet">3.8.接口/任务配置（zero-jet）</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_3_10_工作流配置zero_wf">3.10.工作流配置（zero-wf）</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_3_11_集成服务配置zero_is">3.11.集成服务配置（zero-is）</h3>
+
+</div>
+<div class="sect2">
+<h3 id="_3_12_模块化配置zero_berrery">3.12.模块化配置（zero-berrery）</h3>
+
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Version v1.02<br>
-Last updated 2023-02-16 22:04:25 +0800
+Version v1.04<br>
+Last updated 2023-03-11 19:16:01 +0800
 </div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.18.3/highlight.min.js"></script>

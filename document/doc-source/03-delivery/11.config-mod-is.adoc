@@ -1,0 +1,5 @@
+ifndef::imagesdir[:imagesdir: ../images]
+:data-uri:
+
+=== 3.11.集成服务配置（zero-is）
+

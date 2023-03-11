@@ -1,7 +1,7 @@
 = Zero云平台白皮书
 :author: 虞浪
 :email: silentbalanceyh@126.com
-:revnumber: v1.02
+:revnumber: v1.04
 :revdate: 02.04.2023
 :doctype: book
 :toc: left
@@ -21,6 +21,8 @@
 |1.00|虞浪|2023-02-07|起草基本云平台规范
 |1.01|虞浪|2023-02-12|动态建模平台一键式部署修订
 |1.02|虞浪|2023-02-14|前端结构规范
+|1.03|虞浪|2023-02-22|前端样式规范
+|1.04|虞浪|2023-03-11|数据驱动层
 |====
 
 == 0. 环境标准
@@ -41,4 +43,17 @@ include::01-spec/05.spec-frontend-style.adoc[]
 include::02-env/01.env-ready.adoc[]
 include::02-env/02.env-database.adoc[]
 
-== 3. 原理剖析
+== 3. 配置/实施
+
+include::03-delivery/01.config-app.adoc[]
+include::03-delivery/02.config-web-cab.adoc[]
+include::03-delivery/03.config-web-ui.adoc[]
+include::03-delivery/04.config-web-component.adoc[]
+include::03-delivery/05.config-web-dev.adoc[]
+include::03-delivery/06.config-mod-crud.adoc[]
+include::03-delivery/07.config-mod-acl.adoc[]
+include::03-delivery/08.config-mod-atom.adoc[]
+include::03-delivery/09.config-mod-jet.adoc[]
+include::03-delivery/10.config-mod-wf.adoc[]
+include::03-delivery/11.config-mod-is.adoc[]
+include::03-delivery/12.config-mod-modulat.adoc[]

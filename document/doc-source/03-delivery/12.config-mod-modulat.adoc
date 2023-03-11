@@ -1,0 +1,5 @@
+ifndef::imagesdir[:imagesdir: ../images]
+:data-uri:
+
+=== 3.12.模块化配置（zero-berrery）
+

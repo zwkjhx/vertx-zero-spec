@@ -1,0 +1,5 @@
+ifndef::imagesdir[:imagesdir: ../images]
+:data-uri:
+
+=== 3.8.动态建模（zero-atom）
+
