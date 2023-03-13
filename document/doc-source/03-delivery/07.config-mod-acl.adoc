@@ -48,5 +48,15 @@ image::zarch-perm.png[,1280]
 include::07.config-mod-acl-profile.adoc[]
 include::07.config-mod-acl-view.adoc[]
 include::07.config-mod-acl-visitor.adoc[]
+include::07.config-mod-acl-json.adoc[]
 
 ==== 3.7.2.管理端
+
+前文讨论了Zero权限框架中的 *消费端*，本章节开始讨论权限框架的 *管理端*，管理端的主要目的是为您定制所需要的核心配置数据，并且通过交互式界面直接为用户执行权限、视图、访问者的授权工作，管理端入口在Zero Extension框架中有三个：
+
+- 角色管理 -> 权限设置
+- 权限设置 -> 角色授权 -> 选择某个角色
+- 权限设置 -> 用户特权（现阶段版本还未放出来）
+
+管理端的主体是 *角色*，所以管理端的所有操作都是角色级的，只是在设计过程中管理端遵循如下设计原则：
+
