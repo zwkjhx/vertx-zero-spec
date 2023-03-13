@@ -13,7 +13,7 @@ ifndef::imagesdir[:imagesdir: ../images]
 Zero在线教程中讲解过可插拔模式的认证组件，此处略过认证部分（[source,java]`@Wall` ），本书主要讲解扩展模块中的授权以及 [source,java]`zero-rbac` 模块如何实现企业级需求的复杂授权流程，其中标准化认证采用了 OAuth 规范。
 ====
 
-==== 3.7.1.核心概念
+==== 3.7.1.消费端
 
 ===== 3.7.1.1.XBAC模型
 
@@ -47,11 +47,6 @@ image::zarch-perm.png[,1280]
 
 include::07.config-mod-acl-profile.adoc[]
 include::07.config-mod-acl-view.adoc[]
-
-===== 3.7.1.4.资源访问者（Visitor）
-
-===== 3.7.1.5.可扩展管理端（Region）
+include::07.config-mod-acl-visitor.adoc[]
 
 ==== 3.7.2.管理端
-
-==== 3.7.3.消费端
