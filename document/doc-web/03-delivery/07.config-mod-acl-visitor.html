@@ -443,6 +443,20 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <div id="content">
 <div class="sect4">
 <h5 id="_3_7_1_4_资源访问者visitor">3.7.1.4.资源访问者（Visitor）</h5>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>多用于抽象层次比较高的 <strong>动态建模</strong> 领域的权限控制。</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
 <div class="paragraph">
 <p>本章进入Zero权限框架中的一个新的领域：<strong>虚拟资源/资源访问者</strong>，在讲虚拟资源之前先思考：为什么要使用虚拟资源？前文安全视图中的定义不知道读者是否发现一个小问题：静态的——一旦绑定了资源之后，就只能在某个资源中直接设置参数和条件，而这里设置的所有条件以及参数都 <strong>不依赖输入</strong>，您考虑下边一个场景。</p>
 </div>
@@ -530,7 +544,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect5">
-<h6 id="_模式和阶段">模式和阶段</h6>
+<h6 id="_执行维度模式和阶段">（执行维度）模式和阶段</h6>
 <div class="paragraph">
 <p>资源访问者语法中的模式 mode 信息：</p>
 </div>
@@ -559,14 +573,16 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 </div>
 </div>
 <div class="sect5">
-<h6 id="_类型标识唯一键">类型/标识/唯一键</h6>
-
+<h6 id="_定义维度类型标识唯一键">（定义维度）类型/标识/唯一键</h6>
+<div class="paragraph">
+<p>执行资源访问者需要具备两个条件：<code>S_RESOURCE</code> 中的执行维度、<code>S_VIEW</code> 中的定义维度，而定义维度就是依赖参数去查找当前 <code>S_VIEW</code> 中所拥有的众多资源访问者中的其中</p>
+</div>
 </div>
 </div>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2023-03-13 19:44:46 +0800
+Last updated 2023-03-13 19:52:08 +0800
 </div>
 </div>
 </body>
